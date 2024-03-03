@@ -1,15 +1,15 @@
 
-        ul {
+        #sources_section ul {
             list-style-type: none;
             padding: 0;
         }
-        li {
+        #sources_section li {
             margin-bottom: 10px;
         }
-        a {
+        #sources_section a {
             text-decoration: none;
             color: #333;
         }
-        a:hover {
+        #sources_section a:hover {
             color: #666;
         }
