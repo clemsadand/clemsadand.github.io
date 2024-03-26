@@ -33,7 +33,11 @@ section{
 .hero{
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 300px;
+	/* background-image: url("/home/clement/Downloads/clemsadand.github.io-main/img/bg_hero.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover; */
     background-color: rgb(34, 30, 30);
     color: white;
     margin: 0px -10px;
