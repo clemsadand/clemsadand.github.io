@@ -1,5 +1,5 @@
 html{
-	font-family: Lato;
+	font-family: Robotto, Lato;
 	font-size: 18px;
 	margin: 0px;
 }
@@ -22,6 +22,14 @@ html{
 }
 
 section{
+	/*height: 300px;*/
+	margin: 15px;
+	padding: 10px 50px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	background-color: #f5f5f5;
+}
+
+#about{
 	/*height: 300px;*/
 	margin: 100px;
 	padding: 50px;
@@ -87,4 +95,14 @@ section{
 
 .bouton:focus{
 	background-color: red;
+}
+
+footer{
+	text-align: center;
+	font-size: 10px;
+	font-weight: 600;
+	margin: -9px;
+	border: 1px solid;
+	background-color: #111555;
+	color: white;
 }
