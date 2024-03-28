@@ -1,7 +1,8 @@
 html{
-	font-family: Robotto, Lato;
+	font-family: Roboto, Lato;
 	font-size: 18px;
 	margin: 0px;
+	color: #4e4e4e;
 }
 
 .logo{
@@ -21,6 +22,16 @@ html{
 	font-weight: bold;
 }
 
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1e1e1e;
+}
+
 section{
 	/*height: 300px;*/
 	margin: 15px;
@@ -35,6 +46,7 @@ section{
 	padding: 50px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.8);
 	background-color: #f5f5f5;
+	background-color: #ededed;
 }
 
 /**Hero section**/
@@ -60,20 +72,6 @@ section{
     font-weight: 800;
 }
 
-@media screen and (max-width: 786px){
-	.hero{
-		font-size: 31px;
-		margin: 10px -10px;
-		height: 350px;
-	}
-	
-	.bouton{
-		font-size: 14px;
-	}
-	
-	
-}	
-
 .bouton{
 	display: block;
 	text-decoration: none;
@@ -96,6 +94,48 @@ section{
 .bouton:focus{
 	background-color: red;
 }
+
+
+
+/**********************************/
+.cols{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cols .col1{
+	width: 70%;
+}
+
+.cols .cols2{
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	margin: 0 0 0 -20px;
+}
+
+#profile{
+	width: 220px;
+	height: 220px;
+	border-radius: 220px;
+	border: 5px solid black;
+	text-align: center;
+}
+
+
+
+.social img{
+	width: 30px;
+	height: 30px;
+	padding: 0 10px 0 0;
+}
+
+
+
+
+
+/***********************************/
 
 footer{
 	text-align: center;
