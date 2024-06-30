@@ -143,6 +143,6 @@ footer{
 	font-weight: 600;
 	margin: -9px;
 	border: 1px solid;
-	background-color: #111555;
+	background-color: #444;/*#111555;*/
 	color: white;
 }

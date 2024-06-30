@@ -6,9 +6,10 @@
 	flex-direction: row;
 	align-items: baseline;
 	justify-content: space-around;
-	background-color: purple;
+	background-color: #4CAF50;/*purple;*/
 	margin: -10px;
-	padding-bottom: 10px;
+	padding: 20px;
+	/* padding-bottom: 10px; */
 	z-index: 100;
 	left: -10px;
 	top: 10px;
