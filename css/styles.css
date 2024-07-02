@@ -180,6 +180,8 @@ label {
     text-align: left;
 }
 
+
+
 input, textarea {
     font-size: 16px;
     padding: 10px;
@@ -210,6 +212,11 @@ Media queries, Mobile versions
 **************************************************/
 
 @media (max-width: 768px){
+	body{
+		font-size: 12px;
+	}
+	
+	
 	#about{
 	  margin: 5px;
 	  padding: 50px;
@@ -218,8 +225,8 @@ Media queries, Mobile versions
 	.cols {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center
+		justify-content: center;
+		margin: auto 20px;
 	}
 	.cols .col1{
 		width: 100%;
@@ -233,6 +240,18 @@ Media queries, Mobile versions
 		width: 150px;
 		height: 150px;
 		border-radius: 150px;
+	}
+	
+	label, input, textarea{
+		font-size: 12px;
+	}
+	
+	button{
+		font-size: 14px;
+	}
+	
+	footer{
+		font-size: 8px;
 	}
 
 }
