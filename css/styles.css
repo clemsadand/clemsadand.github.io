@@ -13,7 +13,7 @@ header {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	height: 150px;
+	height: 250px;
     /*background-color: #4CAF50;*/
     color: white;
     padding: 20px;
@@ -215,7 +215,10 @@ Media queries, Mobile versions
 	body{
 		font-size: 12px;
 	}
-	
+
+	header{
+		height: 150px;
+	}
 	
 	#about{
 	  margin: 5px;
