@@ -23,7 +23,42 @@ header {
 header h1{
 	font-family: 'Great Vibes', cursive;
 	margin: 50px 0px;
+	font-size: 3em;
 }
+
+
+/*
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+.hidden {
+  opacity:0;
+}
+.console-container {
+ 
+  font-family:Khula;
+  font-size:4em;
+  text-align:center;
+  height:200px;
+  width:600px;
+  display:block;
+  position:absolute;
+  color:white;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+.console-underscore {
+   display:inline-block;
+  position:relative;
+  top:-0.14em;
+  left:10px;
+}
+
+*/
+
+
 
 header .overlay {
     position: absolute;
@@ -100,6 +135,38 @@ nav a:hover {
 .date {
     font-size: 0.9em;
     color: gray;
+}
+
+/*************************************************/
+#courses a {
+    color: #444;/*4CAF50;*/
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#courses a:hover{
+	color: #4535a0;
+}
+
+
+#courses ul.custom-list {
+	list-style: none; /* Remove default bullets */
+	padding: 0;
+}
+
+#courses ul.custom-list li {
+	margin-bottom: 15px; /* Add spacing between items */
+}
+#courses ul.custom-list li::before {
+	content: "";
+	display: inline-block;
+	width: 20px; /* Set width of the image */
+	height: 20px; /* Set height of the image */
+	margin-right: 10px;
+	background-image: url('../img/document.png'); /* Path to your image */
+	background-size: contain; /* Adjust image size */
+	background-repeat: no-repeat;
+	vertical-align: middle;
 }
 
 
@@ -218,6 +285,12 @@ Media queries, Mobile versions
 
 	header{
 		height: 150px;
+	}
+	
+	header h1{
+		font-family: 'Great Vibes', cursive;
+		margin: 50px 0px;
+		font-size: normal;
 	}
 	
 	#about{
