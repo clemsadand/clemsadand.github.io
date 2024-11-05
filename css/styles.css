@@ -26,6 +26,10 @@ header h1{
 	font-size: 3em;
 }
 
+h2{
+	color: #444;
+}
+
 a{
 	color:blue;
 	text-decoration: none;
@@ -130,31 +134,31 @@ nav a:hover {
             text-align: center;
             margin-bottom: 20px;
         }
-        .research-container ul {
+.research-container ul {
             list-style-type: none;
             padding: 0;
         }
-        .research-container ul li {
+.research-container ul li {
             padding: 10px 0;
             font-size: 1.05em;
             border-bottom: 1px solid #eee;
             position: relative;
             padding-left: 25px;
         }
-        .research-container ul li:last-child {
+.research-container ul li:last-child {
             border-bottom: none;
         }
-        .research-container ul li::before {
+/* .research-container ul li::before {
             content: "•";
             color: #4a90e2;
             font-size: 1.3em;
             position: absolute;
             left: 0;
             top: 0;
-        }
-        .research-container strong {
+        } */
+/* .research-container strong {
             color: #333;
-        }
+        } */
 
 /***************************************************/
 
