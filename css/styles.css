@@ -106,6 +106,55 @@ nav a:hover {
     padding: 20px;
 }
 
+/**************************************************/
+
+.research-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+            line-height: 1.6;
+        }
+        .research-container h2 {
+            color: #4a90e2;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        .research-container p {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .research-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .research-container ul li {
+            padding: 10px 0;
+            font-size: 1.05em;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 25px;
+        }
+        .research-container ul li:last-child {
+            border-bottom: none;
+        }
+        .research-container ul li::before {
+            content: "•";
+            color: #4a90e2;
+            font-size: 1.3em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .research-container strong {
+            color: #333;
+        }
+
 /***************************************************/
 
 .projects {
