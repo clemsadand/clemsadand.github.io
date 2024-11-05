@@ -154,17 +154,17 @@ section h2{
 .research-container ul li:last-child {
             border-bottom: none;
         }
-/* .research-container ul li::before {
+.research-container ul li::before {
             content: "•";
-            color: #4a90e2;
+/*             color: #4a90e2; */
             font-size: 1.3em;
             position: absolute;
-            left: 0;
-            top: 0;
-        } */
-/* .research-container strong {
+/*             left: 0;
+            top: 0; */
+        }
+.research-container strong {
             color: #333;
-        } */
+        }
 
 /***************************************************/
 
