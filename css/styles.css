@@ -247,9 +247,9 @@ nav a:hover {
 }
 
 #profile{
-	width: 220px;
-	height: 220px;
-	border-radius: 220px;
+	width: 180px;
+	height: 180px;
+	border-radius: 180px;
 	border: 0px solid black;
 	text-align: center;
 }
@@ -368,9 +368,9 @@ Media queries, Mobile versions
 	}
 
 	#profile{
-		width: 150px;
-		height: 150px;
-		border-radius: 150px;
+		width: 110px;
+		height: 110px;
+		border-radius: 110px;
 	}
 	
 	label, input, textarea{
