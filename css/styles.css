@@ -159,8 +159,8 @@ section h2{
 /*             color: #4a90e2; */
             font-size: 1.3em;
             position: absolute;
-/*             left: 0;
-            top: 0; */
+            left: 0;
+            top: -5px;
         }
 .research-container strong {
             color: #333;
@@ -257,9 +257,9 @@ section h2{
 }
 
 #profile{
-	width: 180px;
-	height: 180px;
-	border-radius: 180px;
+	width: 160px;
+	height: 160px;
+	border-radius: 160px;
 	border: 0px solid black;
 	text-align: center;
 }
