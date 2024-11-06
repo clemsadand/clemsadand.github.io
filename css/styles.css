@@ -118,28 +118,6 @@ section h2{
 
 /**************************************************/
 
-/* .research-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: #333;
-            line-height: 1.6;
-        } */
-.research-container h2 {
-/*             color: #4a90e2; */
-		padding: 0px;
-            font-size: 1.6em;
-            margin-bottom: 15px;
-        }
-        .research-container p {
-            font-size: 1.1em;
-/*             color: #555; */
-            text-align: center;
-            margin-bottom: 20px;
-        }
 .research-container ul {
             list-style-type: none;
             padding: 0;
@@ -158,8 +136,8 @@ section h2{
             content: "•";
             font-size: 1.3em;
             position: absolute;
-            left: 0;
-/*             top: 0px; */
+            left: 1px;
+            top: 1px;
         }
 .research-container strong {
             color: #333;
