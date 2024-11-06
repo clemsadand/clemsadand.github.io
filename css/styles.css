@@ -136,8 +136,9 @@ section h2{
             content: "•";
             font-size: 1.3em;
             position: absolute;
-            left: 1px;
-            top: 1px;
+			color: #444;
+            left: 5px;
+            top: 0px;
         }
 .research-container strong {
             color: #333;
