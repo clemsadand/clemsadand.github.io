@@ -212,6 +212,10 @@ section h2{
 	vertical-align: middle;
 }
 
+#courses ul.custom-list p {
+	width: 90%;
+}
+
 
 /************************************************/
 .cols{
