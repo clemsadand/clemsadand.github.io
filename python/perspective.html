@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perspectives : Que faire après ce cours ?</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --info: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            display: none;
+            padding-top: 15px;
+        }
+        
+        .card-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .card-content ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .card-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .card-content li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .card-toggle {
+            text-align: center;
+            margin-top: 15px;
+            padding: 8px 0;
+            border-top: 1px solid #eee;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .project-section {
+            margin-top: 40px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .project-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        
+        .project-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .community-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .community-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .community-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .community-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .community-icon i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .final-advice {
+            margin-top: 50px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .final-advice h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Couleurs pour les icônes */
+        .bg-primary { background-color: var(--primary); }
+        .bg-secondary { background-color: var(--secondary); }
+        .bg-danger { background-color: var(--danger); }
+        .bg-warning { background-color: var(--warning); }
+        .bg-info { background-color: var(--info); }
+        .bg-purple { background-color: #9b59b6; }
+        .bg-orange { background-color: #e67e22; }
+        
+        /* Animation supplémentaire */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .community-icons {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Perspectives : Que faire après ce cours ?</h1>
+            <p class="subtitle">Ce n'est que le début de votre voyage dans le monde de Python</p>
+        </header>
+        
+        <div>
+            <p>Ce document vous a initié aux bases de la programmation en Python et au calcul scientifique avec <code>NumPy</code>. Vous êtes désormais capables d'écrire des programmes structurés, d'analyser des données simples, et de manipuler des tableaux numériques. Mais ce n'est que le début du voyage.</p>
+            <p>Voici quelques pistes passionnantes que vous pouvez explorer pour approfondir vos compétences :</p>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Visualisation de données -->
+            <div class="card" id="card-1">
+                <div class="card-header">
+                    <div class="card-icon bg-primary">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Visualisation de données</h3>
+                </div>
+                <div class="card-content">
+                    <p>Apprendre à représenter les données de manière graphique est essentiel. Pour aller plus loin que <code>matplotlib</code>, explorez :</p>
+                    <ul>
+                        <li><strong>Seaborn</strong> — Pour des visualisations statistiques élégantes</li>
+                        <li><strong>Plotly</strong> — Pour des graphiques interactifs</li>
+                    </ul>
+                </div>
+                <div class="card-toggle">Cliquez pour en savoir plus</div>
+            </div>
+            
+            <!-- Traitement de données avec Pandas -->
+            <div class="card" id="card-2">
+                <div class="card-header">
+                    <div class="card-icon bg-secondary">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h3>Traitement avec Pandas</h3>
+                </div>
+                <div class="card-content">
+                    <p><code>Pandas</code> est une bibliothèque puissante pour manipuler des tableaux de données, souvent sous forme de fichiers CSV ou Excel.</p>
+                    <ul>
+                        <li>Lire, nettoyer, filtrer et agréger des jeux de données</li>
+                        <li>Travailler avec des séries temporelles et des données manquantes</li>
+                    </ul>
+                </div>
+                <div class="card-toggle">Cliquez pour en savoir plus</div>
+            </div>
+            
+            <!-- Intelligence artificielle -->
+            <div class="card" id="card-3">
+                <div class="card-header">
+                    <div class="card-icon bg-danger">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Intelligence artificielle</h3>
+                </div>
+                <div class="card-content">
+                    <p>Avec les bases acquises, vous pouvez explorer l'IA et le machine learning :</p>
+                    <ul>
+                        <li><strong>Scikit-learn</strong> — Pour les modèles d'apprentissage automatique</li>
+                        <li><strong>TensorFlow ou PyTorch</strong> — Pour le deep learning</li>
+                        <li><strong>Keras</strong> — Pour construire des réseaux de neurones simplement</li>
+                    </ul>
+                </div>
+                <div class="card-toggle">Cliquez pour en savoir plus</div>
+            </div>
+            
+            <!-- Programmation scientifique -->
+            <div class="card" id="card-4">
+                <div class="card-header">
+                    <div class="card-icon bg-info">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <h3>Programmation scientifique</h3>
+                </div>
+                <div class="card-content">
+                    <p>Si vous avez une affinité avec les mathématiques appliquées :</p>
+                    <ul>
+                        <li><strong>SciPy</strong> — Pour le calcul scientifique, l'optimisation, etc.</li>
+                        <li><strong>SymPy</strong> — Pour le calcul symbolique (mathématiques formelles)</li>
+                    </ul>
+                </div>
+                <div class="card-toggle">Cliquez pour en savoir plus</div>
+            </div>
+            
+            <!-- Applications interactives -->
+            <div class="card" id="card-5">
+                <div class="card-header">
+                    <div class="card-icon bg-warning">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Applications interactives</h3>
+                </div>
+                <div class="card-content">
+                    <p>Vous pouvez également créer :</p>
+                    <ul>
+                        <li>Des applications web avec <strong>Streamlit</strong> ou <strong>Flask</strong></li>
+                        <li>Des interfaces utilisateur avec <strong>Tkinter</strong></li>
+                        <li>Des notebooks interactifs avec <strong>Jupyter</strong></li>
+                    </ul>
+                </div>
+                <div class="card-toggle">Cliquez pour en savoir plus</div>
+            </div>
+        </div>
+        
+        <!-- Projets à réaliser -->
+        <div class="project-section">
+            <h2><i class="fas fa-rocket"></i> Projets à réaliser pour s'exercer</h2>
+            <p>Mettez en pratique vos connaissances avec ces projets stimulants :</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>Analyse de données météorologiques</h4>
+                    <p>Explorez des fichiers CSV de données météo pour identifier des tendances ou anomalies.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Calculatrice graphique</h4>
+                    <p>Créez une interface permettant de tracer des fonctions mathématiques.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Détection d'anomalies</h4>
+                    <p>Identifiez des comportements inhabituels dans des séries temporelles.</p>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Système de recommandation</h4>
+                    <p>Développez un algorithme qui suggère des films ou livres selon les préférences.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Communauté -->
+        <div class="community-section">
+            <h2><i class="fas fa-users"></i> Participer à la communauté</h2>
+            <p>L'apprentissage est encore plus enrichissant lorsqu'il est partagé :</p>
+            
+            <div class="community-icons">
+                <div class="community-icon floating">
+                    <i class="fab fa-github"></i>
+                    <span>Publiez sur GitHub</span>
+                </div>
+                
+                <div class="community-icon floating" style="animation-delay: 0.5s">
+                    <i class="fas fa-trophy"></i>
+                    <span>Concours Kaggle</span>
+                </div>
+                
+                <div class="community-icon floating" style="animation-delay: 1s">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Projets open source</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Conseil final -->
+        <div class="final-advice">
+            <h2>Conseil final</h2>
+            <p>Progressez étape par étape. L'informatique et la science des données sont des domaines vastes, mais passionnants. Apprenez en pratiquant, en lisant, en partageant, et surtout, en vous amusant !</p>
+        </div>
+        
+        <footer>
+            <p>© 2025 - Introduction à la programmation Python</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Animation pour afficher/masquer le contenu des cartes
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                const toggle = card.querySelector('.card-toggle');
+                const content = card.querySelector('.card-content');
+                
+                toggle.addEventListener('click', function() {
+                    content.classList.toggle('active');
+                    
+                    if (content.classList.contains('active')) {
+                        toggle.textContent = 'Cliquez pour réduire';
+                    } else {
+                        toggle.textContent = 'Cliquez pour en savoir plus';
+                    }
+                });
+            });
+            
+            // Animation pour les cartes de projet
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.backgroundColor = '#e8f4f8';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
