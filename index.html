@@ -889,7 +889,7 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-language"></i>
+                            <i class="fas fa-fire"></i>
                         </div>
                         <h3 class="project-title">PINN for Air Pollution Modeling</h3>
                         <p class="project-subtitle">Computational Fluid Dynamics & Deep Learning</p>
@@ -962,7 +962,7 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-language"></i>
+                            <i class="fas fa-trend"></i>
                         </div>
                         <h3 class="project-title">Multilingual Backpack Language Models</h3>
                         <p class="project-subtitle">Multilingual NLP & Explainable AI</p>
@@ -1244,10 +1244,126 @@
         });
 
         // Mobile menu functionality (placeholder)
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            // Add mobile menu functionality here
-            console.log('Mobile menu clicked');
+        // Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const navContainer = document.querySelector('.nav-container');
+    const navbar = document.getElementById('navbar');
+    
+    // Toggle mobile menu
+    mobileMenuBtn.addEventListener('click', function() {
+        const isOpen = navLinks.classList.contains('active');
+        
+        if (isOpen) {
+            // Close menu
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+            navbar.classList.remove('menu-open');
+        } else {
+            // Open menu
+            navLinks.classList.add('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            document.body.style.overflow = 'hidden';
+            navbar.classList.add('menu-open');
+        }
+    });
+    
+    // Close menu when clicking on nav links
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+            navbar.classList.remove('menu-open');
         });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navContainer.contains(e.target) && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+            navbar.classList.remove('menu-open');
+        }
+    });
+    
+    // Close menu on window resize (if switching to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = 'auto';
+            navbar.classList.remove('menu-open');
+        }
+    });
+    
+    // Smooth scrolling for navigation links
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const navHeight = navbar.offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add scroll effect to navbar
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add background on scroll
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        // Hide/show navbar on scroll (optional)
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            navbar.classList.add('hidden');
+        } else {
+            navbar.classList.remove('hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
+
+// Additional utility functions
+function closeMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const mobileMenuBtn = document.querySelector('.mobile-menu');
+    const navbar = document.getElementById('navbar');
+    
+    navLinks.classList.remove('active');
+    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    document.body.style.overflow = 'auto';
+    navbar.classList.remove('menu-open');
+}
+
+// Handle escape key to close menu
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks.classList.contains('active')) {
+            closeMenu();
+        }
+    }
+});
     </script>
 </body>
 </html>
