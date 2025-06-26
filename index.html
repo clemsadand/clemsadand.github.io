@@ -3,95 +3,1251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Clément Adandé - Mathematics & AI Researcher</title>
+    <meta name="description" content="Passionate researcher applying mathematics to solve real-world problems in Numerical Analysis and Artificial Intelligence.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #eff6ff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #4510fe 100%, #98e7fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--gradient-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto 1rem;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-stats {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--bg-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+        		height: 200px;
+            padding: 2rem;
+            background: var(--gradient-4);
+            color: white;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-accent);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.6rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Course Materials Section */
+        .courses {
+            background: var(--bg-secondary);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .course-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-icon {
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .course-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .course-level {
+            background: var(--bg-accent);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education{
+        	background: var(--bg-secondary);
+        }
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            margin-left: 2rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .education-year {
+            display: inline-block;
+            background: var(--bg-accent);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .education-degree {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .education-school {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .education-description {
+            color: var(--text-secondary);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category i {
+            color: var(--primary-color);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-accent);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .contact-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            opacity: 0.8;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.25rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
 </head>
 <body>
-	<!-- Header -->
-    <header>
-    	<div class="overlay">
-        	<h1></h1>
-
-			<!--<div class='console-container'><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>-->
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">CA</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <!--<li><a href="#courses">Courses</a></li>-->
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </header>
-    <nav>
-        <a href="index.html#home">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="course_material.html">Course Material</a>
-        <a href="contact.html">Contact</a>
-<!--         <a href="index.html#about">About</a> -->
     </nav>
-    
-    <!-- Content -->
-    
-    <div class="cols">
-		<div class="col1">
 
-				<p>Hello! I'm Clément, a passionate researcher and student dedicated to applying mathematics to solve real-world problems, particularly in the areas of Numerical Analysis and Artificial Intelligence.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Clément Adandé</h1>
+                <p class="subtitle">Mathematics & AI Researcher</p>
+                <p class="description">
+                    Passionate researcher dedicated to applying mathematics to solve real-world problems, 
+                    particularly in Numerical Analysis and Artificial Intelligence. Currently advancing 
+                    the intersection of mathematical theory and practical AI applications.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#about" class="btn btn-primary">
+                        <i class="fas fa-user"></i>
+                        Learn More
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.upwork.com/freelancers/~01ed9bb9e52e7fcddb?mp_source=share" target="_blank">
+                        <i class="fas fa-briefcase"></i>
+                    </a>
+                    <a href="mailto:clemsadand@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="www.linkedin.com/in/clemsadand" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="www.github.com/clemsadand" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual floating">
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <!--<i class="fas fa-user-graduate"></i>-->
+                        <img src="clement_aims.jpg" style="width: 200px; border-radius: 100px;">
+                    </div>
+                    <h3>AIMS Alumnus</h3>
+                    <p>AI for Science Program</p>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Funded by Google DeepMind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Combining mathematical rigor with innovative AI research to tackle complex real-world challenges</p>
+            </div>
+            <div class="about-content">
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years of Research</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Master's Degrees</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Specializations</div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>
+                        I am a dedicated researcher with a strong passion for applying mathematical principles 
+                        to solve complex real-world problems. My academic journey has taken me through rigorous 
+                        training in fundamental mathematics, advanced numerical analysis, and cutting-edge 
+                        artificial intelligence research.
+                    </p>
+                    <p>
+                        My expertise spans across multiple domains, with particular focus on the intersection 
+                        of mathematical theory and practical AI applications. I believe in the power of 
+                        mathematical modeling and computational methods to address some of the most challenging 
+                        problems in science and technology.
+                    </p>
+                    <p>
+                        Currently, I'm engaged in various research projects while also providing freelance 
+                        consulting services, helping organizations leverage mathematical and AI solutions 
+                        for their specific challenges. My goal is to bridge the gap between theoretical 
+                        mathematics and practical, impactful applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Innovative solutions at the intersection of mathematics, AI, and computational science</p>
+            </div>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="project-title">PINN for Air Pollution Modeling</h3>
+                        <p class="project-subtitle">Computational Fluid Dynamics & Deep Learning</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Advanced computational study comparing traditional numerical methods with 
+                            Physics-Informed Neural Networks (PINNs) for solving advection-diffusion 
+                            equations in air pollution modeling. Demonstrates the integration of deep 
+                            learning with physical laws to simulate atmospheric pollution transport 
+                            and dispersion patterns.
+                            <!--Simulation of air pollution modeling with advection-diffusion equations using vanilla
+                            Physic-Informed Neural Networks (PINN) and Crouzeix-Raviart finite element method (FEM). 
+                            Advanced numerical implementation from scratch.-->
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Air Pollution</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">FEM</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/clemsadand/AirPollution" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            
+                            <!--<a href="#" class="project-link">
+                                <i class="fas fa-file-alt"></i>
+                                Paper
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="project-title">Interactive Sales Forecasting Dashboard</h3>
+                        <p class="project-subtitle">Business Intelligence & Time Series Analysis</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            A comprehensive web-based dashboard built with Streamlit for sales forecasting using Prophet 
+                            time series model. Features interactive visualizations, trend analysis, and predictive modeling 
+                            capabilities. Integrates real-world Kaggle datasets to demonstrate practical business 
+                            intelligence applications with intuitive user interface.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Time Serie Forecasting</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/clemsadand/multilingual-backpack-lm" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <!--<a href="#" class="project-link">
+                                <i class="fas fa-file-alt"></i>
+                                Paper
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3 class="project-title">Multilingual Backpack Language Models</h3>
+                        <p class="project-subtitle">Multilingual NLP & Explainable AI</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            <!--Exploring training Backpack Language Models on parallel French-English corpora to efficiently 
+                            handle polysemy in multilingual contexts. This research addresses the challenge of ambiguous 
+                            word meanings across languages in neural language models.-->
+                            Pioneering research extending Backpack Language Models to multilingual settings with 
+                            French-English parallel corpora. Implements explicit polysemy handling through multiple 
+                            sense vectors, achieving superior performance over baseline GPT-2 models. Features 
+                            comprehensive evaluation including perplexity analysis, cloze tasks, and sense 
+                            visualization for interpretable multilingual AI.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">Multilingual NLP</span>
+                            <span class="tech-tag">Language Models</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/clemsadand/multilingual-backpack-lm" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-file-alt"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--<div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="project-title">FEM-FEniCSx</h3>
+                        <p class="project-subtitle">Finite Element Methods</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">
+                            Advanced implementation of finite element methods using FEniCSx for solving heat equations. 
+                            This project demonstrates the application of Lagrange and Crouzeix-Raviart finite element methods 
+                            to numerical partial differential equations, showcasing computational mathematics in action.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FEniCSx</span>
+                            <span class="tech-tag">Numerical Analysis</span>
+                            <span class="tech-tag">PDEs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/clemsadand/fem-fenicsx" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>-->
 
 
-				<p>I earned my bachelor's degree in Fundamental Mathematics from the <a href="https://uac.bj/">Université d'Abomey-Calavi</a> in 2019 and followed it with a 
-					master's degree in Fundamental Mathematics from the <a href="https://www.imsp-benin.com">Institut de Mathématiques et de Sciences Physiques</a> in 2022, 
-					where I focused on Numerical Analysis. In 2024, I expanded my expertise by completing a master's degree in <a href="ai.aims.ac.za">AI for Science</a>, 
-					fully funded by <a href="https://deepmind.google/about/education/">Google DeepMind</a>, at the <a href="aims.ac.za">African Institute for Mathematical Sciences</a> 
-					in South Africa. Currently, I'm working on several projects, also as freelance at <a href="https://www.upwork.com/freelancers/~01ed9bb9e52e7fcddb?mp_source=share">Upwork</a> and leading several practical activities related 
-					to mathematics, computer science and programming.
-				</p>
 
-		</div>
-		<div class="col2">
-			<img id="profile" src="img/clement_mmed2.webp"/>
-			<div style="text-align: center;">
-				<p style="color: black; font-weight: 400; font-family: 'Comfortaa', Lato;">Clément Adandé</br><span style="font-size: 12px;"><a href="https://aims.ac.za" class = "link">AIMS Student</a></span></p>
-				<div class="social">
-					<span><a href="mailto:clementa@aims.ac.za"><img src="img/email.png"></a></span>
-					<span><a href="https://linkedin.com/in/clemsadand"><img src="img/linkedin.png"></a></span>
-					<span><a href="https://github.com/clemsadand"><img src="img/github.png"></a></span>				<span><a href="https://www.upwork.com/freelancers/~01ed9bb9e52e7fcddb?mp_source=share"><img src="img/upwork.png"></a></span> 
-					<!--<span><a href="https://twitter.com/clemsadan"><img style="width:24px; height:24px;" src="img/twitter.png"></a></span>-->
-				</div>
-			</div>
-		</div>
-	</div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+    <section id="education" class="section education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>A comprehensive academic foundation in mathematics and artificial intelligence</p>
+            </div>
+            <div class="education-timeline">
+                <div class="education-item fade-in">
+                    <div class="education-year">2024</div>
+                    <h3 class="education-degree">Master's in AI for Science</h3>
+                    <p class="education-school">African Institute for Mathematical Sciences (AIMS) - Stellenbosch University</p>
+                    <p class="education-description">
+                        Completed an intensive program fully funded by Google DeepMind, focusing on the 
+                        application of artificial intelligence methodologies to scientific research and 
+                        real-world problem solving.
+                    </p>
+                </div>
+                <div class="education-item fade-in">
+                    <div class="education-year">2022</div>
+                    <h3 class="education-degree">Master's in Fundamental Mathematics</h3>
+                    <p class="education-school">Institut de Mathématiques et de Sciences Physiques (IMSP) - Université d'Abomey-Calavi</p>
+                    <p class="education-description">
+                        Specialized in Numerical Analysis with focus on mathematical modeling, 
+                        computational methods, and advanced mathematical theories applicable to 
+                        scientific computing.
+                    </p>
+                </div>
+                <div class="education-item fade-in">
+                    <div class="education-year">2019</div>
+                    <h3 class="education-degree">Bachelor's in Fundamental Mathematics</h3>
+                    <p class="education-school">Faculté des Sciences et Techniques (FAST) - Université d'Abomey-Calavi</p>
+                    <p class="education-description">
+                        Established a strong foundation in pure mathematics, including analysis, 
+                        algebra, geometry, and mathematical reasoning that forms the basis of 
+                        my research methodology.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+        <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Expertise</h2>
+                <p>Technical competencies spanning mathematics, AI, and computational sciences</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-calculator"></i> Mathematics</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Numerical Analysis</span>
+                        <span class="skill-tag">Mathematical Modeling</span>
+                        <span class="skill-tag">Differential Equations</span>
+                        <span class="skill-tag">Linear Algebra</span>
+                        <span class="skill-tag">Statistics</span>
+                        <span class="skill-tag">Optimization</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Artificial Intelligence</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">AI for Science</span>
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">NLP</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Jupyter</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Research & Analysis</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Research Design</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Scientific Writing</span>
+                        <span class="skill-tag">Experimental Design</span>
+                        <!--<span class="skill-tag">Peer Review</span>-->
+                        <span class="skill-tag">Project Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<div class="cols">
-	<div class="col1">
-			<section class="research-container">
-		    <h2>Research Interests</h2>
-		    <ul>
-		        <li><strong>Natural Language Processing (NLP):</strong> Exploring language understanding and generation in multilingual and low-resource settings.</li>
-<!-- 		        <li><strong>Computer Vision:</strong> Analyzing and interpreting visual data for automated recognition and classification.</li> -->
-			<li><strong>Numerical Analysis:</strong> Developing computational methods for modeling groundwater flow in complex karst aquifers using FEM.</li>
-		        <li><strong>Probability Theory:</strong> Investigating stochastic processes and probabilistic models for predictive insights.</li>
-		        <li><strong>Statistics:</strong> Applying statistical methods to analyze data and validate models for real-world applications.</li>
-		    </ul>
-				</section>
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="section-header">
+                    <h2 style="color: white;">Let's Connect</h2>
+                    <p style="color: rgba(255,255,255,0.8);">
+                        Ready to collaborate on exciting research projects or need mathematical and AI expertise for your next challenge?
+                    </p>
+                </div>
+                
+                <div class="contact-info">
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <p><a href="www.linkedin.com/in/clemsadand">clemsadand</a></p>
+                    </div>
+                    <!--
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:clemsadand@gmail.com">clementa@aims.ac.za</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-github"></i>
+                        <h3>GitHub</h3>
+                        <p><a href="www.github.com/clemsadand">clemsadand</a></p>
+                    </div>-->
+                    <div class="contact-item">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Freelance</h3>
+                        <p><a href="https://www.upwork.com/freelancers/~01ed9bb9e52e7fcddb?mp_source=share" target="_blank">Upwork Profile</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>Resume</h3>
+                        <p><a href="files/cv_ai_2024_general.pdf">Download CV</a></p>
+                    </div>
+                </div>
 
-			<br>
+                <div style="margin-top: 3rem;">
+                    <a href="mailto:clemsadand@gmail.com" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			<section id="cv" style="padding: 0px;">
-			  	<h2>Curriculum Vitae</h2>
-			  	<p>
-				You can view and download my full CV by clicking the link below.
-			  	</p>
-			  	<a href="files/cv_ai_2024_general.pdf" download style="text-decoration: none; color: #007bff; font-weight: bold;">
-					<button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-					  Download CV
-					</button>
-			  	</a>
-			</section>
-		</div>
-	</div>
-	
-	<!-- End content -->
-    
+    <!-- Footer -->
     <footer>
-		<p>© Clément Adandé - 2024</p>
-	</footer>
-	<script src="js/animation.js"></script>
+        <div class="container">
+            <p>&copy; 2025 Clément Adandé. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.education-item');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Mobile menu functionality (placeholder)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            // Add mobile menu functionality here
+            console.log('Mobile menu clicked');
+        });
+    </script>
 </body>
 </html>
-
