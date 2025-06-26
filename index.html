@@ -685,10 +685,22 @@
             .nav-links {
                 display: none;
             }
+            
 
             .mobile-menu {
                 display: block;
             }
+            
+            .education-description{
+            	display: none;
+            	font-size: 1rem;
+            }
+            
+            /* Adjust hero section to account for fixed navbar */
+    		.hero {
+       		 padding-top: calc(var(--navbar-height, 70px) + 2rem);
+      		  min-height: calc(100vh - var(--navbar-height, 70px));
+  		  }
 
             .hero-container {
                 grid-template-columns: 1fr;
@@ -707,6 +719,11 @@
                 justify-content: center;
                 flex-wrap: wrap;
             }
+            
+            .social-links {
+                justify-content: center;
+                /*flex-wrap: wrap;*/
+            }
 
             .about-content {
                 grid-template-columns: 1fr;
@@ -723,11 +740,90 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+            
+           
+            
+            .project-subtitle{
+            	display: none;
+            }
 
             .courses-grid {
                 grid-template-columns: 1fr;
             }
-        }
+            
+            .project-card {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hide description by default on mobile */
+    .project-description {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        margin-bottom: 0;
+        transition: all 0.4s ease;
+        transform: translateY(-10px);
+    }
+    
+    /* Show description when expanded */
+    .project-card.expanded .project-description {
+        max-height: 200px; /* Adjust based on your content */
+        opacity: 1;
+        margin-bottom: 1rem;
+        transform: translateY(0);
+    }
+    
+    
+	/* Expand/Collapse Button */
+    .project-expand-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(64, 224, 208, 0.1);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+    
+    .project-expand-btn:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+        transform: scale(1.1);
+    }
+    
+    .project-expand-btn i {
+        transition: transform 0.3s ease;
+    }
+    
+    .project-card.expanded .project-expand-btn i {
+        transform: rotate(180deg);
+    }
+    
+    /* Ensure tech tags and links have proper spacing */
+    .project-tech {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .project-links {
+        margin-top: 1rem;
+    }
 
         /* Animations */
         @keyframes fadeInUp {
@@ -928,7 +1024,7 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-language"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                         <h3 class="project-title">Interactive Sales Forecasting Dashboard</h3>
                         <p class="project-subtitle">Business Intelligence & Time Series Analysis</p>
@@ -962,7 +1058,7 @@
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-trend"></i>
+                            <i class="fas fa-language"></i>
                         </div>
                         <h3 class="project-title">Multilingual Backpack Language Models</h3>
                         <p class="project-subtitle">Multilingual NLP & Explainable AI</p>
@@ -989,7 +1085,7 @@
                                 <i class="fab fa-github"></i>
                                 GitHub
                             </a>
-                            <a href="#" class="project-link">
+                            <a href="files/clementa_essay_review.pdf" class="project-link">
                                 <i class="fas fa-file-alt"></i>
                                 Paper
                             </a>
@@ -1150,7 +1246,7 @@
                 <div class="contact-info">
                     
                     <div class="contact-item">
-                        <i class="fas fa-linkedin"></i>
+                        <i class="fab fa-linkedin"></i>
                         <h3>LinkedIn</h3>
                         <p><a href="www.linkedin.com/in/clemsadand">clemsadand</a></p>
                     </div>
@@ -1363,6 +1459,182 @@ document.addEventListener('keydown', function(e) {
             closeMenu();
         }
     }
+});
+	
+	// Mobile Project Description Expand/Collapse Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Add expand buttons to project cards on mobile
+    function addExpandButtons() {
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach((card, index) => {
+            // Check if button already exists
+            if (card.querySelector('.project-expand-btn') || card.querySelector('.project-toggle-text')) {
+                return;
+            }
+            
+            const projectHeader = card.querySelector('.project-header');
+            const projectContent = card.querySelector('.project-content');
+            const description = card.querySelector('.project-description');
+            
+            if (!projectHeader || !description) return;
+            
+            // Method 1: Round button in top-right corner
+            const expandBtn = document.createElement('button');
+            expandBtn.className = 'project-expand-btn';
+            expandBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            expandBtn.setAttribute('aria-label', 'Expand project description');
+            
+            // Method 2: Text button after subtitle (alternative)
+            //const toggleText = document.createElement('div');
+            //toggleText.className = 'project-toggle-text';
+            //toggleText.innerHTML = 'Show Details <i class="fas fa-chevron-down"></i>';
+            
+            // Add both options (you can remove one if you prefer)
+            card.appendChild(expandBtn);
+            //projectHeader.appendChild(toggleText);
+            
+            // Add click handlers
+            expandBtn.addEventListener('click', () => toggleDescription(card, expandBtn));
+            //toggleText.addEventListener('click', () => toggleDescription(card, toggleText));
+        });
+    }
+    
+    // Toggle description visibility
+    function toggleDescription(card, button) {
+        const description = card.querySelector('.project-description');
+        const isExpanded = card.classList.contains('expanded');
+        const expandBtn = card.querySelector('.project-expand-btn');
+        //const toggleText = card.querySelector('.project-toggle-text');
+        
+        if (isExpanded) {
+            // Collapse
+            card.classList.remove('expanded');
+            card.classList.add('expanding');
+            
+            // Update button states
+            if (expandBtn) {
+                expandBtn.setAttribute('aria-label', 'Expand project description');
+            }
+            //if (toggleText) {
+            //    toggleText.innerHTML = 'Show Details <i class="fas fa-chevron-down"></i>';
+            //}
+            
+            // Remove expanding class after animation
+            setTimeout(() => {
+                card.classList.remove('expanding');
+            }, 300);
+            
+        } else {
+            // Expand
+            card.classList.add('expanded', 'expanding');
+            
+            // Calculate proper height for smooth animation
+            const clone = description.cloneNode(true);
+            clone.classList.add('measuring');
+            card.appendChild(clone);
+            const height = clone.offsetHeight;
+            card.removeChild(clone);
+            
+            // Set max-height for animation
+            description.style.maxHeight = height + 'px';
+            
+            // Update button states
+            if (expandBtn) {
+                expandBtn.setAttribute('aria-label', 'Collapse project description');
+            }
+            //if (toggleText) {
+            //    toggleText.innerHTML = 'Hide Details <i class="fas fa-chevron-up"></i>';
+            //}
+            
+            // Remove expanding class after animation
+            setTimeout(() => {
+                card.classList.remove('expanding');
+                // Reset max-height to allow for dynamic content
+                if (card.classList.contains('expanded')) {
+                    description.style.maxHeight = 'none';
+                }
+            }, 400);
+        }
+    }
+    
+    // Initialize on page load
+    function initializeProjectCards() {
+        if (window.innerWidth <= 768) {
+            addExpandButtons();
+        }
+    }
+    
+    // Handle window resize
+    function handleResize() {
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        if (window.innerWidth <= 768) {
+            addExpandButtons();
+        } else {
+            // Remove mobile-specific elements on desktop
+            projectCards.forEach(card => {
+                const expandBtn = card.querySelector('.project-expand-btn');
+                const toggleText = card.querySelector('.project-toggle-text');
+                const description = card.querySelector('.project-description');
+                
+                if (expandBtn) expandBtn.remove();
+                //if (toggleText) toggleText.remove();
+                
+                // Reset card state
+                card.classList.remove('expanded', 'expanding');
+                if (description) {
+                    description.style.maxHeight = '';
+                }
+            });
+        }
+    }
+    
+    // Debounce resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(handleResize, 250);
+    });
+    
+    // Initialize
+    initializeProjectCards();
+    
+    // Optional: Auto-collapse when scrolling to save space
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+        if (window.innerWidth > 768) return;
+        
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Auto-collapse expanded cards when scrolling down quickly
+        if (scrollTop > lastScrollTop + 100) {
+            const expandedCards = document.querySelectorAll('.project-card.expanded');
+            expandedCards.forEach(card => {
+                const expandBtn = card.querySelector('.project-expand-btn');
+                if (expandBtn) {
+                    toggleDescription(card, expandBtn);
+                }
+            });
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Keyboard accessibility
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const expandedCards = document.querySelectorAll('.project-card.expanded');
+            expandedCards.forEach(card => {
+                const expandBtn = card.querySelector('.project-expand-btn');
+                if (expandBtn) {
+                    toggleDescription(card, expandBtn);
+                }
+            });
+        }
+    });
+    
 });
     </script>
 </body>
