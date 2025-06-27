@@ -213,6 +213,10 @@
             border-color: white;
         }
 
+        .specialization_dash{
+            display: none;
+        }
+
         .social-links {
             display: flex;
             gap: 1rem;
@@ -682,6 +686,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            *{
+                font-size: 0.9rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -693,7 +701,7 @@
             
             .education-description{
             	display: none;
-            	font-size: 1rem;
+            	/*font-size: 1rem;*/
             }
             
             /* Adjust hero section to account for fixed navbar */
@@ -729,8 +737,53 @@
                 grid-template-columns: 1fr;
             }
 
+            .about-stats {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .stat-card {
+                background: white;
+                padding: 1rem;
+                border-radius: 15px;
+                box-shadow: var(--shadow-sm);
+                border: 1px solid var(--border-color);
+                text-align: center;
+            }
+    
+            .stat-number {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: var(--primary-color);
+                margin-bottom: 0.5rem;
+            }
+    
+            .stat-label {
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+                font-weight: 500;
+            }
+
+            .specialization_dash{
+                display: inline-block;
+            }
+
+            .specialization_full{
+                display: none;
+            }
+
+            .about-text {
+                /*font-size: 0.9rem;*/
+                line-height: 1.8;
+                color: var(--text-secondary);
+            }
+
+            
             .contact-info {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-item > h3{
+                display: none;
             }
 
             .section-header h2 {
@@ -740,17 +793,19 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .project-icon > i{
+                font-size: 2.5rem;
+            }
             
             .project-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-            
-           
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
             
             .project-subtitle{
-            	display: none;
+            	//display: none;
             }
 
             .courses-grid {
@@ -758,72 +813,72 @@
             }
             
             .project-card {
-        position: relative;
-        transition: all 0.3s ease;
-    }
-    
-    /* Hide description by default on mobile */
-    .project-description {
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        margin-bottom: 0;
-        transition: all 0.4s ease;
-        transform: translateY(-10px);
-    }
-    
-    /* Show description when expanded */
-    .project-card.expanded .project-description {
-        max-height: 200px; /* Adjust based on your content */
-        opacity: 1;
-        margin-bottom: 1rem;
-        transform: translateY(0);
-    }
-    
-    
-	/* Expand/Collapse Button */
-    .project-expand-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(64, 224, 208, 0.1);
-        border: 1px solid var(--accent-color);
-        color: var(--accent-color);
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        z-index: 2;
-    }
-    
-    .project-expand-btn:hover {
-        background: var(--accent-color);
-        color: var(--bg-color);
-        transform: scale(1.1);
-    }
-    
-    .project-expand-btn i {
-        transition: transform 0.3s ease;
-    }
-    
-    .project-card.expanded .project-expand-btn i {
-        transform: rotate(180deg);
-    }
-    
-    /* Ensure tech tags and links have proper spacing */
-    .project-tech {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .project-links {
-        margin-top: 1rem;
-    }
+                position: relative;
+                transition: all 0.3s ease;
+            }
+            
+            /* Hide description by default on mobile */
+            .project-description {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                margin-bottom: 0;
+                transition: all 0.4s ease;
+                transform: translateY(-10px);
+            }
+            
+            /* Show description when expanded */
+            .project-card.expanded .project-description {
+                max-height: 250px; /* Adjust based on your content */
+                opacity: 1;
+                margin-bottom: 1rem;
+                transform: translateY(0);
+            }
+            
+            
+            /* Expand/Collapse Button */
+            .project-expand-btn {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: rgba(64, 224, 208, 0.1);
+                border: 1px solid var(--accent-color);
+                color: var(--accent-color);
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                /*font-size: 0.9rem;*/
+                transition: all 0.3s ease;
+                z-index: 2;
+            }
+            
+            .project-expand-btn:hover {
+                background: var(--accent-color);
+                color: var(--bg-color);
+                transform: scale(1.1);
+            }
+            
+            .project-expand-btn i {
+                transition: transform 0.3s ease;
+            }
+            
+            .project-card.expanded .project-expand-btn i {
+                transform: rotate(180deg);
+            }
+            
+            /* Ensure tech tags and links have proper spacing */
+            .project-tech {
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .project-links {
+                margin-top: 1rem;
+            }
 
         /* Animations */
         @keyframes fadeInUp {
@@ -946,7 +1001,7 @@
                     </div>
                     <div class="stat-card">
                         <div class="stat-number">3</div>
-                        <div class="stat-label">Specializations</div>
+                        <div class="stat-label"><span class="specialization_full">Specializations</span><span class="specialization_dash">Speciali-<br>zations</span></div>
                     </div>
                 </div>
                 <div class="about-text">
@@ -1005,7 +1060,7 @@
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Air Pollution</span>
                             <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">FEM</span>
+                            <span class="tech-tag">Environmental Modeling</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/clemsadand/AirPollution" target="_blank" class="project-link">
@@ -1043,14 +1098,14 @@
                             <span class="tech-tag">Data Visualization</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/clemsadand/multilingual-backpack-lm" target="_blank" class="project-link">
+                            <!--<a href="https://github.com/clemsadand/multilingual-backpack-lm" target="_blank" class="project-link">
                                 <i class="fab fa-github"></i>
                                 GitHub
-                            </a>
-                            <!--<a href="#" class="project-link">
-                                <i class="fas fa-file-alt"></i>
-                                Paper
                             </a>-->
+                            <a href="https://fsales.streamlit.app/" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1245,10 +1300,10 @@
                 
                 <div class="contact-info">
                     
-                    <div class="contact-item">
+                    <div class="contact-item" >
                         <i class="fab fa-linkedin"></i>
                         <h3>LinkedIn</h3>
-                        <p><a href="www.linkedin.com/in/clemsadand">clemsadand</a></p>
+                        <p><a href="www.linkedin.com/in/clemsadand">Connect</a></p>
                     </div>
                     <!--
                     <div class="contact-item">
@@ -1269,7 +1324,7 @@
                     <div class="contact-item">
                         <i class="fas fa-file-pdf"></i>
                         <h3>Resume</h3>
-                        <p><a href="files/cv_ai_2024_general.pdf">Download CV</a></p>
+                        <p><a href="files/cv_ai_2024_general.pdf">Get my CV</a></p>
                     </div>
                 </div>
 
@@ -1522,9 +1577,9 @@ document.addEventListener('DOMContentLoaded', function() {
             //}
             
             // Remove expanding class after animation
-            setTimeout(() => {
-                card.classList.remove('expanding');
-            }, 300);
+            //setTimeout(() => {
+            //    card.classList.remove('expanding');
+            //}, 300);
             
         } else {
             // Expand
@@ -1538,7 +1593,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.removeChild(clone);
             
             // Set max-height for animation
-            description.style.maxHeight = height + 'px';
+            //description.style.maxHeight = height + 'px';
             
             // Update button states
             if (expandBtn) {
@@ -1548,14 +1603,14 @@ document.addEventListener('DOMContentLoaded', function() {
             //    toggleText.innerHTML = 'Hide Details <i class="fas fa-chevron-up"></i>';
             //}
             
-            // Remove expanding class after animation
+            /*// Remove expanding class after animation
             setTimeout(() => {
                 card.classList.remove('expanding');
                 // Reset max-height to allow for dynamic content
                 if (card.classList.contains('expanded')) {
                     description.style.maxHeight = 'none';
                 }
-            }, 400);
+            }, 400);*/
         }
     }
     
