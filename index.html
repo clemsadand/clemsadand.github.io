@@ -376,15 +376,16 @@
         }
 
         .project-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            /* margin-top: -0.3rem; */
+            margin-bottom: 0.2rem;
             opacity: 0.9;
         }
 
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
         }
 
         .project-subtitle {
@@ -708,12 +709,12 @@
             z-index: 1;
         }
 
-        .services-grid {
+        /* .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
-        }
+        } */
 
         .service-card {
             background: white;
@@ -724,6 +725,7 @@
             border: 1px solid var(--border-color);
             position: relative;
             transform: translateY(0);
+            width: 320px;
         }
 
         .service-card:hover {
@@ -767,14 +769,14 @@
         }
         
         .service-icon i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             opacity: 0.9;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .service-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             line-height: 1.3;
@@ -1123,11 +1125,6 @@
             }
 
             /* services */
-                .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
             .service-card.featured {
                 transform: none;
             }
@@ -1178,7 +1175,24 @@
                 padding: 0.3rem 0.8rem;
                 font-size: 0.75rem;
             }
-        
+
+            /* remove carousel on mobile */
+
+            .carousel-track {
+                flex-direction: column; /* Stack vertically */
+                animation: none !important;
+                transform: none !important;
+                align-items: center; /* Center cards */
+            }
+
+            .carousel-track .service-card {
+                flex: none; /* or just use flex: none; width: 80vw; */
+                width: 85vw;
+                /* max-width: 100vw; */
+                /* margin: 0 auto; */
+                /* margin-left:  25px; */
+                       
+                    }
         }
 
         /* Animations */
@@ -1236,6 +1250,28 @@
             animation-delay: 0.3s;
         }
         
+        /* Animate services */
+        .carousel-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            width: 100%;
+            position: relative;
+            padding: 2rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            width: min-content;
+        }
+
+        /* .carousel-wrapper:hover .carousel-track {
+            animation-play-state: paused;
+        } */
+
+
+
     </style>
 </head>
 <body>
@@ -1521,7 +1557,8 @@
             <p>Specialized consulting and tutoring services in mathematics, AI, and computational sciences</p>
         </div>
         <div class="services-grid">
-            
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
             <!-- Python Development Service -->
             <div class="service-card">
                 <div class="service-header">
@@ -1700,6 +1737,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
         </div>
 
