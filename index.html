@@ -684,6 +684,248 @@
             padding: 2rem 0;
         }
 
+        /* Services Section Styles */
+        .services {
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(135deg, var(--bg-accent) 0%, transparent 100%);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card.featured {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.02);
+        }
+
+        .service-card.featured:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-header {
+            background: var(--gradient);
+            color: white;
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .service-card.featured .service-header {
+            background: var(--gradient-2);
+        }
+        
+        .service-icon i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .service-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .feature-item i {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            width: 16px;
+            flex-shrink: 0;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .service-pricing {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .price-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Services CTA */
+        .services-cta {
+            margin-top: 4rem;
+            background: var(--gradient);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-buttons .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid white;
+        }
+
+        .cta-buttons .btn-primary:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .cta-buttons .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+
+
         /* Responsive Design */
         @media (max-width: 768px) {
             *{
@@ -804,9 +1046,9 @@
                 margin-bottom: 0.5rem;
             }
             
-            .project-subtitle{
-            	//display: none;
-            }
+            /* .project-subtitle{
+            	display: none;
+            } */
 
             .courses-grid {
                 grid-template-columns: 1fr;
@@ -880,8 +1122,100 @@
                 margin-top: 1rem;
             }
 
-        /* Animations */
-        @keyframes fadeInUp {
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .fade-in {
+                animation: fadeInUp 0.6s ease-out;
+            }
+
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Floating elements */
+            .floating {
+                animation: float 6s ease-in-out infinite;
+            }
+
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+            }
+
+            /* services */
+                .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .service-card.featured {
+                transform: none;
+            }
+            
+            .service-card.featured:hover {
+                transform: translateY(-5px);
+            }
+            
+            .service-header {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+            
+            .service-icon {
+                font-size: 2.8rem;
+            }
+            
+            .service-title {
+                font-size: 1.2rem;
+            }
+            
+            .service-content {
+                padding: 1.5rem;
+            }
+            
+            .services-cta {
+                padding: 2rem 1.5rem;
+                margin-top: 3rem;
+            }
+            
+            .cta-content h3 {
+                font-size: 1.6rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .featured-badge {
+                top: 10px;
+                right: 10px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.75rem;
+            }
+        
+        }
+
+
+
+        /* Animation on scroll */
+        @keyframes slideInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -892,24 +1226,22 @@
             }
         }
 
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
+        .service-card {
+            animation: slideInUp 0.6s ease-out;
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        .service-card:nth-child(2) {
+            animation-delay: 0.1s;
         }
 
-        /* Floating elements */
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .service-card:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .service-card:nth-child(4) {
+            animation-delay: 0.3s;
         }
+        
     </style>
 </head>
 <body>
@@ -921,6 +1253,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
                 <!--<li><a href="#courses">Courses</a></li>-->
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -1068,10 +1401,10 @@
                                 GitHub
                             </a>
                             
-                            <!--<a href="#" class="project-link">
+                            <a href="#" class="project-link">
                                 <i class="fas fa-file-alt"></i>
                                 Paper
-                            </a>-->
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1185,6 +1518,216 @@
 
             </div>
         </section>
+        
+        <!-- Services Section -->
+<section id="services" class="section services">
+    <div class="container">
+        <div class="section-header">
+            <h2>Professional Services</h2>
+            <p>Specialized consulting and tutoring services in mathematics, AI, and computational sciences</p>
+        </div>
+        <div class="services-grid">
+            
+            <!-- Python Development Service -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="service-title">Python Development</h3>
+                    <p class="service-subtitle">Full-Stack Python Solutions</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Custom Python applications, data analysis pipelines, web applications with Django, Flask or Streamlit, 
+                        and scientific computing solutions. From automation scripts to complex data processing systems.
+                    </p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Web Development (Django/Flask/Streamlit)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Data Analysis & Visualization</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>API Development & Integration</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Automation Scripts</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Scientific Computing</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="price-label">Starting from</span>
+                        <span class="price">$10/hour</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI/ML Service -->
+            <div class="service-card featured">
+                <div class="featured-badge">Most Popular</div>
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="service-title">AI & Machine Learning</h3>
+                    <p class="service-subtitle">Advanced AI Solutions</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Complete AI/ML project development from research to deployment. Deep learning models, 
+                        NLP applications, computer vision, and custom AI solutions tailored to your business needs.
+                    </p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Machine Learning Models</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Deep Learning & Neural Networks</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Natural Language Processing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Prompt Engineering</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>AI Research & Consulting</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="price-label">Starting from</span>
+                        <span class="price">$10/hour</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LaTeX Service -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-file-text"></i>
+                    </div>
+                    <h3 class="service-title">LaTeX Document Preparation</h3>
+                    <p class="service-subtitle">Professional Academic Writing</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Professional LaTeX document creation for academic papers, theses, presentations, and technical 
+                        documentation. Beautiful formatting with mathematical notation and scientific standards.
+                    </p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Academic Papers & Theses</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Mathematical Notation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Beamer Presentations</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Technical Reports</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Bibliography Management</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="price-label">Starting from</span>
+                        <span class="price">$10/hour</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Math Tutoring Service -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title">Mathematics Tutoring</h3>
+                    <p class="service-subtitle">Personalized Math Education</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        <!-- Expert mathematics tutoring from basic algebra to advanced topics like numerical analysis, 
+                        differential equations, and mathematical modeling. Tailored approach for all skill levels. -->
+                        Personalized mathematics instruction from high school to graduate level. Clear explanations, 
+                        problem-solving strategies, and comprehensive support for mathematical concepts and applications.
+                    </p>
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Linear Algebra</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Calculus & Analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Differential Equations</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Numerical Methods</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Statistics & Probability</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check"></i>
+                            <span>Exam Preparation</span>
+                        </div>
+                    </div>
+                    <div class="service-pricing">
+                        <span class="price-label">Starting from</span>
+                        <span class="price">$20/hour</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Call to Action -->
+        <div class="services-cta">
+            <div class="cta-content">
+                <h3>Ready to Start Your Project?</h3>
+                <p>Let's discuss how I can help you achieve your goals with expert mathematical and AI solutions.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:clemsadand@gmail.com" class="btn btn-primary">
+                        <i class="fas fa-comments"></i>
+                        Get Free Consultation
+                    </a>
+                    <a href="https://www.upwork.com/freelancers/~01ed9bb9e52e7fcddb?mp_source=share" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i>
+                        View Upwork Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
         
         <!-- Education Section -->
     <section id="education" class="section education">
