@@ -264,15 +264,70 @@
             }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-SLXHTTZXJJ"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-SLXHTTZXJJ');
-	</script>
+    
+    <!-- Google Analytics 4 Enhanced -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLXHTTZXJJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // Configuration GA4 avec événements personnalisés
+        gtag('config', 'G-SLXHTTZXJJ', {
+            // Suivi des interactions de page amélioré
+            send_page_view: true,
+            page_title: 'Perspectives Python',
+            page_location: window.location.href,
+            
+            // Configuration pour mesurer l'engagement
+            engagement_time_msec: 100,
+            
+            // Paramètres personnalisés
+            custom_map: {
+                'custom_parameter_1': 'content_category'
+            }
+        });
+
+        // Fonction pour envoyer des événements personnalisés
+        function trackEvent(eventName, parameters = {}) {
+            gtag('event', eventName, {
+                event_category: 'User Interaction',
+                event_label: parameters.label || '',
+                value: parameters.value || 1,
+                ...parameters
+            });
+        }
+
+        // Fonction pour tracker les clics sur les liens externes
+        function trackExternalLink(url, linkText, category) {
+            gtag('event', 'click', {
+                event_category: 'External Links',
+                event_label: linkText,
+                transport_type: 'beacon',
+                custom_parameter_1: category
+            });
+        }
+
+        // Fonction pour tracker le temps passé sur une section
+        function trackTimeOnSection(sectionName, timeSpent) {
+            gtag('event', 'timing_complete', {
+                event_category: 'User Engagement',
+                event_label: sectionName,
+                value: Math.round(timeSpent / 1000), // en secondes
+                metric_id: 'time_on_section'
+            });
+        }
+
+        // Fonction pour tracker les interactions de scroll
+        function trackScrollDepth(percentage) {
+            gtag('event', 'scroll', {
+                event_category: 'User Engagement',
+                event_label: 'Scroll Depth',
+                value: percentage,
+                scroll_depth: percentage
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -282,13 +337,13 @@
         </header>
         
         <div>
-            <p>Ce <a ref="files/courses_materials/intro_python.pdf">cours</a> vous a initié aux bases de la programmation en Python et au calcul scientifique avec <code>NumPy</code>. Vous avez appris les fondamentaux comme les variables, les structures de contrôle, les fonctions, les structures de données, et vous avez découvert Matplotlib et NumPy pour la visualisation et le calcul scientifique.</p>
+            <p>Ce <a href="files/courses_materials/intro_python.pdf" onclick="trackExternalLink(this.href, 'PDF Cours', 'Course Material')">cours</a> vous a initié aux bases de la programmation en Python et au calcul scientifique avec <code>NumPy</code>. Vous avez appris les fondamentaux comme les variables, les structures de contrôle, les fonctions, les structures de données, et vous avez découvert Matplotlib et NumPy pour la visualisation et le calcul scientifique.</p>
             <p>Maintenant que vous maîtrisez ces concepts fondamentaux présentés dans ce cours, voici quelques pistes passionnantes que vous pouvez explorer pour approfondir vos compétences :</p>
         </div>
         
         <div class="cards-container">
             <!-- Visualisation de données -->
-            <div class="card" id="card-1">
+            <div class="card" id="card-1" data-category="visualization">
                 <div class="card-header">
                     <div class="card-icon bg-primary">
                         <i class="fas fa-chart-bar"></i>
@@ -298,16 +353,16 @@
                 <div class="card-content">
                     <p>Après avoir utilisé <code>Matplotlib</code> (chapitre 6), approfondissez la visualisation de données avec :</p>
                     <ul>
-                        <li><strong>Seaborn</strong> — Pour des visualisations statistiques élégantes <a href="https://seaborn.pydata.org/tutorial.html" target="_blank">(Tutoriel officiel)</a></li>
-                        <li><strong>Plotly</strong> — Pour des graphiques interactifs <a href="https://plotly.com/python/getting-started/" target="_blank">(Guide de démarrage)</a></li>
-                        <li><strong>Bokeh</strong> — Pour des visualisations interactives pour le web <a href="https://docs.bokeh.org/en/latest/docs/first_steps.html" target="_blank">(Premiers pas)</a></li>
+                        <li><strong>Seaborn</strong> — Pour des visualisations statistiques élégantes <a href="https://seaborn.pydata.org/tutorial.html" target="_blank" onclick="trackExternalLink(this.href, 'Seaborn Tutorial', 'Visualization')">(Tutoriel officiel)</a></li>
+                        <li><strong>Plotly</strong> — Pour des graphiques interactifs <a href="https://plotly.com/python/getting-started/" target="_blank" onclick="trackExternalLink(this.href, 'Plotly Guide', 'Visualization')">(Guide de démarrage)</a></li>
+                        <li><strong>Bokeh</strong> — Pour des visualisations interactives pour le web <a href="https://docs.bokeh.org/en/latest/docs/first_steps.html" target="_blank" onclick="trackExternalLink(this.href, 'Bokeh Guide', 'Visualization')">(Premiers pas)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
             </div>
             
             <!-- Traitement de données avec Pandas -->
-            <div class="card" id="card-2">
+            <div class="card" id="card-2" data-category="data-processing">
                 <div class="card-header">
                     <div class="card-icon bg-secondary">
                         <i class="fas fa-table"></i>
@@ -317,16 +372,16 @@
                 <div class="card-content">
                     <p>Étape logique après <code>NumPy</code> (chapitre 7), <code>Pandas</code> est une bibliothèque puissante pour manipuler des tableaux de données structurées :</p>
                     <ul>
-                        <li>Lire, nettoyer, filtrer et agréger des jeux de données <a href="https://pandas.pydata.org/docs/user_guide/10min.html" target="_blank">(Guide 10 minutes)</a></li>
-                        <li>Travailler avec des séries temporelles et des données manquantes <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank">(Tutoriels)</a></li>
-                        <li>Analyser et transformer des données tabulaires <a href="https://pandas.pydata.org/docs/user_guide/cookbook.html" target="_blank">(Recettes)</a></li>
+                        <li>Lire, nettoyer, filtrer et agréger des jeux de données <a href="https://pandas.pydata.org/docs/user_guide/10min.html" target="_blank" onclick="trackExternalLink(this.href, 'Pandas 10min Guide', 'Data Processing')">(Guide 10 minutes)</a></li>
+                        <li>Travailler avec des séries temporelles et des données manquantes <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank" onclick="trackExternalLink(this.href, 'Pandas Tutorials', 'Data Processing')">(Tutoriels)</a></li>
+                        <li>Analyser et transformer des données tabulaires <a href="https://pandas.pydata.org/docs/user_guide/cookbook.html" target="_blank" onclick="trackExternalLink(this.href, 'Pandas Cookbook', 'Data Processing')">(Recettes)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
             </div>
             
             <!-- Intelligence artificielle -->
-            <div class="card" id="card-3">
+            <div class="card" id="card-3" data-category="ai-ml">
                 <div class="card-header">
                     <div class="card-icon bg-danger">
                         <i class="fas fa-brain"></i>
@@ -336,16 +391,16 @@
                 <div class="card-content">
                     <p>Idéal pour les étudiants en MIA (Mathématiques et Informatique Appliquées), approfondissez avec :</p>
                     <ul>
-                        <li><strong>Scikit-learn</strong> — Pour les modèles d'apprentissage automatique <a href="https://scikit-learn.org/stable/tutorial/index.html" target="_blank">(Tutoriel)</a></li>
-                        <li><strong>TensorFlow</strong> <a href="https://www.tensorflow.org/tutorials" target="_blank">(Guide)</a> ou <strong>PyTorch</strong> <a href="https://pytorch.org/tutorials/" target="_blank">(Tutoriels)</a> — Pour le deep learning</li>
-                        <li><strong>Keras</strong> — Pour construire des réseaux de neurones simplement <a href="https://keras.io/getting_started/" target="_blank">(Démarrage)</a></li>
+                        <li><strong>Scikit-learn</strong> — Pour les modèles d'apprentissage automatique <a href="https://scikit-learn.org/stable/tutorial/index.html" target="_blank" onclick="trackExternalLink(this.href, 'Scikit-learn Tutorial', 'AI/ML')">(Tutoriel)</a></li>
+                        <li><strong>TensorFlow</strong> <a href="https://www.tensorflow.org/tutorials" target="_blank" onclick="trackExternalLink(this.href, 'TensorFlow Guide', 'AI/ML')">(Guide)</a> ou <strong>PyTorch</strong> <a href="https://pytorch.org/tutorials/" target="_blank" onclick="trackExternalLink(this.href, 'PyTorch Tutorials', 'AI/ML')">(Tutoriels)</a> — Pour le deep learning</li>
+                        <li><strong>Keras</strong> — Pour construire des réseaux de neurones simplement <a href="https://keras.io/getting_started/" target="_blank" onclick="trackExternalLink(this.href, 'Keras Getting Started', 'AI/ML')">(Démarrage)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
             </div>
             
             <!-- Programmation scientifique -->
-            <div class="card" id="card-4">
+            <div class="card" id="card-4" data-category="scientific-computing">
                 <div class="card-header">
                     <div class="card-icon bg-info">
                         <i class="fas fa-square-root-alt"></i>
@@ -355,16 +410,16 @@
                 <div class="card-content">
                     <p>Approfondissez les notions numériques vues avec <code>NumPy</code> :</p>
                     <ul>
-                        <li><strong>SciPy</strong> — Pour l'algèbre linéaire avancée, l'optimisation, les statistiques <a href="https://docs.scipy.org/doc/scipy/tutorial/index.html" target="_blank">(Documentation)</a></li>
-                        <li><strong>SymPy</strong> — Pour le calcul symbolique (mathématiques formelles) <a href="https://docs.sympy.org/latest/tutorials/index.html" target="_blank">(Tutoriels)</a></li>
-                        <li><strong>statsmodels</strong> — Pour les modèles statistiques et tests <a href="https://www.statsmodels.org/stable/user-guide.html" target="_blank">(Guide)</a></li>
+                        <li><strong>SciPy</strong> — Pour l'algèbre linéaire avancée, l'optimisation, les statistiques <a href="https://docs.scipy.org/doc/scipy/tutorial/index.html" target="_blank" onclick="trackExternalLink(this.href, 'SciPy Documentation', 'Scientific Computing')">(Documentation)</a></li>
+                        <li><strong>SymPy</strong> — Pour le calcul symbolique (mathématiques formelles) <a href="https://docs.sympy.org/latest/tutorials/index.html" target="_blank" onclick="trackExternalLink(this.href, 'SymPy Tutorials', 'Scientific Computing')">(Tutoriels)</a></li>
+                        <li><strong>statsmodels</strong> — Pour les modèles statistiques et tests <a href="https://www.statsmodels.org/stable/user-guide.html" target="_blank" onclick="trackExternalLink(this.href, 'Statsmodels Guide', 'Scientific Computing')">(Guide)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
             </div>
             
             <!-- Applications interactives -->
-            <div class="card" id="card-5">
+            <div class="card" id="card-5" data-category="web-apps">
                 <div class="card-header">
                     <div class="card-icon bg-warning">
                         <i class="fas fa-desktop"></i>
@@ -374,16 +429,16 @@
                 <div class="card-content">
                     <p>Transformez vos scripts Python en applications utilisables :</p>
                     <ul>
-                        <li>Des applications web avec <strong>Streamlit</strong> <a href="https://docs.streamlit.io/library/get-started" target="_blank">(Démarrage)</a> ou <strong>Flask</strong> <a href="https://flask.palletsprojects.com/en/2.3.x/tutorial/" target="_blank">(Tutoriel)</a></li>
-                        <li>Des interfaces utilisateur avec <strong>Tkinter</strong> <a href="https://realpython.com/python-gui-tkinter/" target="_blank">(Guide RealPython)</a></li>
-                        <li>Des notebooks interactifs avec <strong>Jupyter</strong> <a href="https://jupyter.org/try" target="_blank">(Essayer en ligne)</a></li>
+                        <li>Des applications web avec <strong>Streamlit</strong> <a href="https://docs.streamlit.io/library/get-started" target="_blank" onclick="trackExternalLink(this.href, 'Streamlit Getting Started', 'Web Apps')">(Démarrage)</a> ou <strong>Flask</strong> <a href="https://flask.palletsprojects.com/en/2.3.x/tutorial/" target="_blank" onclick="trackExternalLink(this.href, 'Flask Tutorial', 'Web Apps')">(Tutoriel)</a></li>
+                        <li>Des interfaces utilisateur avec <strong>Tkinter</strong> <a href="https://realpython.com/python-gui-tkinter/" target="_blank" onclick="trackExternalLink(this.href, 'Tkinter Guide', 'Web Apps')">(Guide RealPython)</a></li>
+                        <li>Des notebooks interactifs avec <strong>Jupyter</strong> <a href="https://jupyter.org/try" target="_blank" onclick="trackExternalLink(this.href, 'Jupyter Online', 'Web Apps')">(Essayer en ligne)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
             </div>
             
             <!-- Bases de données -->
-            <div class="card" id="card-6">
+            <div class="card" id="card-6" data-category="databases">
                 <div class="card-header">
                     <div class="card-icon bg-purple">
                         <i class="fas fa-database"></i>
@@ -393,16 +448,16 @@
                 <div class="card-content">
                     <p>Apprenez à stocker et à manipuler des données structurées :</p>
                     <ul>
-                        <li><strong>SQLite</strong> avec <code>sqlite3</code> — Base de données SQL légère <a href="https://docs.python.org/fr/3/library/sqlite3.html" target="_blank">(Documentation)</a></li>
-                        <li><strong>SQLAlchemy</strong> — ORM pour les bases de données relationnelles <a href="https://docs.sqlalchemy.org/en/20/tutorial/" target="_blank">(Tutoriel)</a></li>
-                        <li><strong>MongoDB</strong> avec <code>pymongo</code> — Base de données NoSQL <a href="https://pymongo.readthedocs.io/en/stable/tutorial.html" target="_blank">(Guide)</a></li>
+                        <li><strong>SQLite</strong> avec <code>sqlite3</code> — Base de données SQL légère <a href="https://docs.python.org/fr/3/library/sqlite3.html" target="_blank" onclick="trackExternalLink(this.href, 'SQLite Documentation', 'Databases')">(Documentation)</a></li>
+                        <li><strong>SQLAlchemy</strong> — ORM pour les bases de données relationnelles <a href="https://docs.sqlalchemy.org/en/20/tutorial/" target="_blank" onclick="trackExternalLink(this.href, 'SQLAlchemy Tutorial', 'Databases')">(Tutoriel)</a></li>
+                        <li><strong>MongoDB</strong> avec <code>pymongo</code> — Base de données NoSQL <a href="https://pymongo.readthedocs.io/en/stable/tutorial.html" target="_blank" onclick="trackExternalLink(this.href, 'PyMongo Guide', 'Databases')">(Guide)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
             </div>
             
             <!-- Applications concrètes mathématiques -->
-            <div class="card" id="card-7">
+            <div class="card" id="card-7" data-category="math-applications">
                 <div class="card-header">
                     <div class="card-icon bg-orange">
                         <i class="fas fa-calculator"></i>
@@ -412,9 +467,9 @@
                 <div class="card-content">
                     <p>Spécifiquement pour les étudiants en MIA (Mathématiques et Informatique Appliquées) :</p>
                     <ul>
-                        <li><strong>Optimisation</strong> avec <code>scipy.optimize</code> pour les problèmes d'optimisation <a href="https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html" target="_blank">(Guide)</a></li>
-                        <li><strong>Équations différentielles</strong> avec <code>scipy.integrate</code> <a href="https://docs.scipy.org/doc/scipy/tutorial/integrate.html" target="_blank">(Tutoriel)</a></li>
-                        <li><strong>Cryptographie</strong> avec <code>cryptography</code> pour les applications sécurisées <a href="https://cryptography.io/en/latest/hazmat/primitives/" target="_blank">(Documentation)</a></li>
+                        <li><strong>Optimisation</strong> avec <code>scipy.optimize</code> pour les problèmes d'optimisation <a href="https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html" target="_blank" onclick="trackExternalLink(this.href, 'SciPy Optimization Guide', 'Math Applications')">(Guide)</a></li>
+                        <li><strong>Équations différentielles</strong> avec <code>scipy.integrate</code> <a href="https://docs.scipy.org/doc/scipy/tutorial/integrate.html" target="_blank" onclick="trackExternalLink(this.href, 'SciPy Integration Tutorial', 'Math Applications')">(Tutoriel)</a></li>
+                        <li><strong>Cryptographie</strong> avec <code>cryptography</code> pour les applications sécurisées <a href="https://cryptography.io/en/latest/hazmat/primitives/" target="_blank" onclick="trackExternalLink(this.href, 'Cryptography Documentation', 'Math Applications')">(Documentation)</a></li>
                     </ul>
                 </div>
                 <div class="card-toggle">Cliquez pour en savoir plus</div>
@@ -422,59 +477,59 @@
         </div>
         
         <!-- Projets à réaliser -->
-        <div class="project-section">
+        <div class="project-section" id="projects-section">
             <h2><i class="fas fa-rocket"></i> Projets à réaliser pour s'exercer</h2>
             <p>Mettez en pratique vos connaissances avec ces projets stimulants :</p>
             
             <div class="project-grid">
-                <div class="project-card">
+                <div class="project-card" data-project="weather-analysis">
                     <h4>Analyse de données météorologiques</h4>
                     <p>Explorez des fichiers CSV de données météo pour identifier des tendances ou anomalies.</p>
-                    <p><a href="https://openweathermap.org/api" target="_blank">Source de données</a></p>
+                    <p><a href="https://openweathermap.org/api" target="_blank" onclick="trackExternalLink(this.href, 'OpenWeatherMap API', 'Project Resource')">Source de données</a></p>
                 </div>
                 
-                <div class="project-card">
+                <div class="project-card" data-project="graphing-calculator">
                     <h4>Calculatrice graphique</h4>
                     <p>Créez une interface permettant de tracer des fonctions mathématiques.</p>
-                    <p><a href="https://matplotlib.org/stable/gallery/index.html" target="_blank">Exemples matplotlib</a></p>
+                    <p><a href="https://matplotlib.org/stable/gallery/index.html" target="_blank" onclick="trackExternalLink(this.href, 'Matplotlib Gallery', 'Project Resource')">Exemples matplotlib</a></p>
                 </div>
                 
-                <div class="project-card">
+                <div class="project-card" data-project="anomaly-detection">
                     <h4>Détection d'anomalies</h4>
                     <p>Identifiez des comportements inhabituels dans des séries temporelles.</p>
-                    <p><a href="https://scikit-learn.org/stable/modules/outlier_detection.html" target="_blank">Guide scikit-learn</a></p>
+                    <p><a href="https://scikit-learn.org/stable/modules/outlier_detection.html" target="_blank" onclick="trackExternalLink(this.href, 'Scikit-learn Outlier Detection', 'Project Resource')">Guide scikit-learn</a></p>
                 </div>
                 
-                <div class="project-card">
+                <div class="project-card" data-project="recommendation-system">
                     <h4>Système de recommandation</h4>
                     <p>Développez un algorithme qui suggère des films ou livres selon les préférences.</p>
-                    <p><a href="https://grouplens.org/datasets/movielens/" target="_blank">Dataset MovieLens</a></p>
+                    <p><a href="https://grouplens.org/datasets/movielens/" target="_blank" onclick="trackExternalLink(this.href, 'MovieLens Dataset', 'Project Resource')">Dataset MovieLens</a></p>
                 </div>
             </div>
         </div>
         
         <!-- Communauté -->
-        <div class="community-section">
+        <div class="community-section" id="community-section">
             <h2><i class="fas fa-users"></i> Participer à la communauté</h2>
             <p>L'apprentissage est encore plus enrichissant lorsqu'il est partagé :</p>
             
             <div class="community-icons">
                 <div class="community-icon floating">
-                    <a href="https://github.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://github.com/" target="_blank" style="text-decoration: none; color: inherit;" onclick="trackExternalLink(this.href, 'GitHub', 'Community')">
                         <i class="fab fa-github"></i>
                         <span>Publiez sur GitHub</span>
                     </a>
                 </div>
                 
                 <div class="community-icon floating" style="animation-delay: 0.5s">
-                    <a href="https://www.kaggle.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://www.kaggle.com/" target="_blank" style="text-decoration: none; color: inherit;" onclick="trackExternalLink(this.href, 'Kaggle', 'Community')">
                         <i class="fas fa-trophy"></i>
                         <span>Concours Kaggle</span>
                     </a>
                 </div>
                 
                 <div class="community-icon floating" style="animation-delay: 1s">
-                    <a href="https://opensource.guide/how-to-contribute/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <a href="https://opensource.guide/how-to-contribute/" target="_blank" style="text-decoration: none; color: inherit;" onclick="trackExternalLink(this.href, 'Open Source Guide', 'Community')">
                         <i class="fas fa-code-branch"></i>
                         <span>Projets open source</span>
                     </a>
@@ -483,49 +538,295 @@
         </div>
         
         <!-- Conseil final -->
-        <div class="final-advice">
+        <div class="final-advice" id="final-advice-section">
             <h2>Conseil final</h2>
             <p>Progressez étape par étape. L'informatique et la science des données sont des domaines vastes, mais passionnants. Apprenez en pratiquant, en lisant, en partageant, et surtout, en vous amusant !</p>
         </div>
         
         <footer>
             <p>© 2025 - Introduction à la programmation Python et calcul scientifique</p>
-            <p><a href="https://www.python.org/doc/" target="_blank">Documentation Python</a> | 
-               <a href="https://numpy.org/doc/stable/" target="_blank">Documentation NumPy</a> | 
-               <a href="https://docs.python-guide.org/" target="_blank">Guide Hitchhiker's Python</a></p>
+            <p><a href="https://www.python.org/doc/" target="_blank" onclick="trackExternalLink(this.href, 'Python Documentation', 'Footer Link')">Documentation Python</a> | 
+               <a href="https://numpy.org/doc/stable/" target="_blank" onclick="trackExternalLink(this.href, 'NumPy Documentation', 'Footer Link')">Documentation NumPy</a> | 
+               <a href="https://docs.python-guide.org/" target="_blank" onclick="trackExternalLink(this.href, 'Python Guide', 'Footer Link')">Guide Hitchhiker's Python</a></p>
         </footer>
     </div>
     
     <script>
-        // Animation pour afficher/masquer le contenu des cartes
+        // Variables pour le suivi du temps et des interactions
+        let pageStartTime = Date.now();
+        let sectionStartTimes = {};
+        let scrollDepthReached = 0;
+        let cardsInteracted = new Set();
+        
         document.addEventListener('DOMContentLoaded', function() {
+            // Envoyer un événement de page vue personnalisé
+            gtag('event', 'page_view', {
+                event_category: 'Navigation',
+                event_label: 'Course Perspectives Page',
+                page_title: document.title,
+                page_location: window.location.href
+            });
+            
             const cards = document.querySelectorAll('.card');
             
-            cards.forEach(card => {
+            cards.forEach((card, index) => {
                 const toggle = card.querySelector('.card-toggle');
                 const content = card.querySelector('.card-content');
+                const cardCategory = card.dataset.category;
                 
                 toggle.addEventListener('click', function() {
+                    const cardId = card.id;
+                    const isExpanding = !content.classList.contains('active');
+                    
                     content.classList.toggle('active');
                     
-                    if (content.classList.contains('active')) {
+                    // Tracker l'interaction avec la carte
+                    if (isExpanding) {
                         toggle.textContent = 'Cliquez pour réduire';
+                        sectionStartTimes[cardId] = Date.now();
+                        cardsInteracted.add(cardId);
+                        
+                        // Événement d'expansion de carte
+                        gtag('event', 'card_expand', {
+                            event_category: 'Content Interaction',
+                            event_label: cardCategory,
+                            card_id: cardId,
+                            card_position: index + 1,
+                            custom_parameter_1: cardCategory
+                        });
                     } else {
                         toggle.textContent = 'Cliquez pour en savoir plus';
+                        
+                        // Calculer le temps passé sur cette section
+                        if (sectionStartTimes[cardId]) {
+                            const timeSpent = Date.now() - sectionStartTimes[cardId];
+                            trackTimeOnSection(cardCategory, timeSpent);
+                            delete sectionStartTimes[cardId];
+                        }
+                        
+                        // Événement de fermeture de carte
+                        gtag('event', 'card_collapse', {
+                            event_category: 'Content Interaction',
+                            event_label: cardCategory,
+                            card_id: cardId,
+                            custom_parameter_1: cardCategory
+                        });
                     }
+                });
+                
+                // Tracker les survols de cartes
+                card.addEventListener('mouseenter', function() {
+                    gtag('event', 'card_hover', {
+                        event_category: 'User Engagement',
+                        event_label: cardCategory,
+                        card_id: cardId,
+                        non_interaction: true
+                    });
                 });
             });
             
-            // Animation pour les cartes de projet
+            // Animation pour les cartes de projet avec tracking
             const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
+            projectCards.forEach((card, index) => {
                 card.addEventListener('click', function() {
+                    const projectType = this.dataset.project;
+                    
                     this.style.backgroundColor = '#e8f4f8';
                     setTimeout(() => {
                         this.style.backgroundColor = '';
                     }, 300);
+                    
+                    // Tracker les clics sur les projets
+                    gtag('event', 'project_interest', {
+                        event_category: 'Project Engagement',
+                        event_label: projectType,
+                        project_position: index + 1,
+                        value: 1
+                    });
                 });
             });
+            
+            // Suivi du scroll avec jalons
+            let scrollMilestones = [25, 50, 75, 90, 100];
+            let milestonesReached = new Set();
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+                
+                scrollMilestones.forEach(milestone => {
+                    if (scrollPercent >= milestone && !milestonesReached.has(milestone)) {
+                        milestonesReached.add(milestone);
+                        trackScrollDepth(milestone);
+                    }
+                });
+            });
+            
+            // Suivi du temps passé sur la page
+            setInterval(function() {
+                const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+                
+                // Envoyer des jalons de temps
+                if (timeOnPage % 30 === 0 && timeOnPage > 0) { // Chaque 30 secondes
+                    gtag('event', 'time_on_page', {
+                        event_category: 'User Engagement',
+                        event_label: 'Time Milestone',
+                        value: timeOnPage,
+                        time_seconds: timeOnPage
+                    });
+                }
+            }, 1000);
+            
+            // Suivi de la visibilité des sections avec Intersection Observer
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -20% 0px'
+            };
+            
+            const sectionObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id;
+                        if (sectionId) {
+                            gtag('event', 'section_view', {
+                                event_category: 'Content Engagement',
+                                event_label: sectionId,
+                                section_name: sectionId,
+                                non_interaction: true
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les sections principales
+            document.querySelectorAll('[id*="section"], .project-section, .community-section, .final-advice').forEach(section => {
+                sectionObserver.observe(section);
+            });
+            
+            // Suivi des interactions clavier
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'f') {
+                    gtag('event', 'search_page', {
+                        event_category: 'User Behavior',
+                        event_label: 'Ctrl+F Search',
+                        non_interaction: true
+                    });
+                }
+            });
+            
+            // Suivi des clics sur les codes (éléments <code>)
+            document.querySelectorAll('code').forEach(codeElement => {
+                codeElement.addEventListener('click', function() {
+                    gtag('event', 'code_click', {
+                        event_category: 'Content Interaction',
+                        event_label: this.textContent,
+                        code_content: this.textContent
+                    });
+                });
+            });
+        });
+        
+        // Suivi de la fermeture/sortie de page
+        window.addEventListener('beforeunload', function() {
+            const totalTimeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+            const engagementScore = calculateEngagementScore();
+            
+            gtag('event', 'page_exit', {
+                event_category: 'User Engagement',
+                event_label: 'Page Exit',
+                total_time_seconds: totalTimeOnPage,
+                cards_interacted: cardsInteracted.size,
+                engagement_score: engagementScore,
+                transport_type: 'beacon'
+            });
+        });
+        
+        // Fonction pour calculer un score d'engagement
+        function calculateEngagementScore() {
+            let score = 0;
+            
+            // Points pour les cartes ouvertes
+            score += cardsInteracted.size * 10;
+            
+            // Points pour le scroll
+            score += Math.min(scrollDepthReached, 100) / 10;
+            
+            // Points pour le temps passé (max 100 points pour 5 minutes)
+            const timeOnPage = (Date.now() - pageStartTime) / 1000;
+            score += Math.min(timeOnPage / 3, 100);  // 1 point par 3 secondes, max 100
+            
+            return Math.round(score);
+        }
+        
+        // Suivi des erreurs JavaScript
+        window.addEventListener('error', function(e) {
+            gtag('event', 'exception', {
+                description: e.message,
+                fatal: false,
+                error_line: e.lineno,
+                error_filename: e.filename
+            });
+        });
+        
+        // Fonction pour envoyer des événements personnalisés depuis la console (pour debug)
+        window.debugAnalytics = function(eventName, params = {}) {
+            console.log('Sending analytics event:', eventName, params);
+            gtag('event', eventName, {
+                event_category: 'Debug',
+                ...params
+            });
+        };
+        
+        // Suivi des performances de page
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                if (perfData) {
+                    gtag('event', 'timing_complete', {
+                        name: 'page_load_time',
+                        value: Math.round(perfData.loadEventEnd - perfData.loadEventStart)
+                    });
+                    
+                    gtag('event', 'timing_complete', {
+                        name: 'dom_ready_time',
+                        value: Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart)
+                    });
+                }
+            }, 0);
+        });
+        
+        // Détection des dispositifs et envoi d'informations contextuelles
+        function sendDeviceInfo() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const screenSize = `${screen.width}x${screen.height}`;
+            const viewport = `${window.innerWidth}x${window.innerHeight}`;
+            
+            gtag('event', 'device_info', {
+                event_category: 'Technical',
+                event_label: 'Device Context',
+                device_type: isMobile ? 'mobile' : 'desktop',
+                screen_resolution: screenSize,
+                viewport_size: viewport,
+                user_agent: navigator.userAgent.substring(0, 100), // Limité à 100 chars
+                non_interaction: true
+            });
+        }
+        
+        // Envoyer les infos du dispositif au chargement
+        window.addEventListener('load', sendDeviceInfo);
+        
+        // Suivi des changements d'orientation sur mobile
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                gtag('event', 'orientation_change', {
+                    event_category: 'User Behavior',
+                    event_label: 'Screen Orientation',
+                    orientation: screen.orientation ? screen.orientation.angle : 'unknown',
+                    non_interaction: true
+                });
+            }, 100);
         });
     </script>
 </body>
