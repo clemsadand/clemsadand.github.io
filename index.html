@@ -1127,6 +1127,8 @@
             /* services */
             .service-card.featured {
                 transform: none;
+				border: 2px solid var(--primary-color);
+				margin: 0 0 2rem 0;
             }
             
             .service-card.featured:hover {
@@ -1252,18 +1254,18 @@
         
         /* Animate services */
         .carousel-wrapper {
-            overflow-x: auto;
-            overflow-y: hidden;
+            overflow-x: visible;
+            overflow-y: visible;
             width: 100%;
             position: relative;
-            padding: 2rem 0;
+            padding: 1rem 0;
             scroll-behavior: smooth;
         }
 
         .carousel-track {
-            display: flex;
-            gap: 2rem;
-            width: min-content;
+            display: block;
+            gap: 0;
+            width: 100%;
         }
 
         /* .carousel-wrapper:hover .carousel-track {
