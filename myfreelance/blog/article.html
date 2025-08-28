@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="article-title">Article - Blog</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" href="../static/css/styles-articles.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">Retour au Blog</a>
+  </header>
+  <main id="article-container">
+    <div class="loading">Chargement de l'article...</div>
+  </main>
+  <script>
+    async function loadArticle() {
+      try {
+        // Récupérer l'ID de l'article depuis l'URL
+        const params = new URLSearchParams(window.location.search);
+        const articleId = params.get("id");
+        
+        // Charger le JSON
+        const response = await fetch("articles.json");
+        const articles = await response.json();
+        
+        // Trouver l'article correspondant
+        const article = articles.find(a => a.id === articleId);
+        
+        if (!article) {
+          document.getElementById("article-container").innerHTML = 
+            '<div class="error"><h2>Article introuvable 😢</h2><p>L\'article que vous cherchez n\'existe pas ou a été supprimé.</p></div>';
+          return;
+        }
+        
+        // Injecter les données avec la nouvelle structure
+        document.title = article.title + " | Blog";
+        document.getElementById("article-container").innerHTML = `
+          <div class="article-header">
+            <h1 id="title">${article.title}</h1>
+            <p id="meta">${article.date} • ${article.readingTime}</p>
+            <div id="tags">${article.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+          </div>
+          <article id="content">${article.content}</article>
+        `;
+        
+      } catch (error) {
+        console.error('Erreur lors du chargement:', error);
+        document.getElementById("article-container").innerHTML = 
+          '<div class="error"><h2>Erreur de chargement 😞</h2><p>Impossible de charger l\'article. Veuillez réessayer plus tard.</p></div>';
+      }
+    }
+    
+    loadArticle();
+  </script>
+</body>
+</html>

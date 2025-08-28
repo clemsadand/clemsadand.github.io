@@ -1,0 +1,152 @@
+/* Responsive Design */
+        @media (max-width: 768px) {
+        	* {
+        		font-size: 0.9rem;
+        	}
+        	
+        	.screen{
+        		display: none;
+        	}
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 15, 15, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px;
+                margin-top: 10px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                gap: 10px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav {
+                left: 20px;
+                right: 20px;
+                transform: none;
+                width: calc(100% - 40px);
+            }
+            
+            .nav-container{
+            	background: transparent;
+            }
+
+            .hero {
+                height: 90vh;
+                padding-top: 100px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .overview-card {
+                padding: 40px 30px;
+                margin-bottom: 60px;
+            }
+
+            .overview-title {
+                font-size: 2rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .contact-floating {
+                right: 10px;
+                gap: 10px;
+            }
+
+            .contact-item {
+                padding: 12px;
+            }
+        	
+        	.features-grid {
+        		grid-template-columns: 1fr;
+				padding: 1rem;
+				gap: 1.5rem;
+			}
+			
+			.feature-card {
+				padding: 1.5rem;
+			}
+			
+			.feature-icon {
+				width: 60px;
+				height: 60px;
+			}
+			
+			.feature-icon svg {
+				width: 36px;
+				height: 36px;
+			}
+    
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .consultation-cta {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .features-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* .language-toggle {
+                top: 30px;
+                right: 30px;
+            } */
+        }
+
+
+@media (max-width: 480px) {
+            .overview-card {
+                padding: 30px 20px;
+            }
+            
+            .overview-description,
+            .overview-list li {
+                font-size: 1rem;
+            }
+        }
+        
+
