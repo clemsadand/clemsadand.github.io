@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="article-title">Article - Blog</title>
   <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/styles-medium-small.css">
   <link rel="stylesheet" href="../static/css/styles-articles.css">
 </head>
 <body>
@@ -39,7 +40,7 @@
         document.getElementById("article-container").innerHTML = `
           <div class="article-header">
             <h1 id="title">${article.title}</h1>
-            <p id="meta">${article.date} • ${article.readingTime}</p>
+            <p id="meta">${article.date} • ${article.readingTime} min</p>
             <div id="tags">${article.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
           </div>
           <article id="content">${article.content}</article>

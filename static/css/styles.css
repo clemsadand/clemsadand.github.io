@@ -745,6 +745,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-bottom: 80px;
+            margin-top: 80px;
         }
 
         .blog-meta {
@@ -754,16 +755,22 @@
         }
 
         .blog-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 15px;
+
             color: #ffffff;
+            height: 45px;;
         }
 
         .blog-excerpt {
+            /* height: 80px; */
             color: #d4d4d8;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin: 20px 2px;
+            /* margin-left: 1px;
+            margin-bottom: 20px; */
+            font-size: 0.9rem;
         }
 
         .blog-tags {
@@ -778,7 +785,7 @@
             color: #d4d4d8;
             padding: 4px 12px;
             border-radius: 15px;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -1204,3 +1211,136 @@ footer ul li {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.zone-contact {
+    display: flex; justify-content: space-between;
+}
+
+/* Reference in the blog */
+.page-reference >  a{
+    color: white;
+}
+.page-reference > a:active {
+    color: white;
+    opacity: 0.8;
+}
+
+.page-reference > a:focus {
+    color: white;
+    opacity: 0.8;
+}
+
+.page-reference > a:hover {
+    color: white;
+    opacity: 0.8;
+}
+
+.page-reference > a::after {
+    color: white;
+    opacity: 0.8;
+}
+
+.page-reference > a::before {
+    color: white;
+    opacity: 0.8;
+}
+
+.newsletter-form {
+    display: flex; 
+    justify-content: center;
+    gap: 10px;
+}
+
+#search, .newsletter-form input{
+    flex: 1; 
+    padding: 12px 15px; 
+    border-radius: 25px; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.newsletter-form button{
+    flex: 1; 
+    padding: 12px 15px; 
+    /* border-radisus: 25px;  */
+    /* border: 1px solid rgba(255, 255, 255, 0.2);  */
+    /* background: rgba(255, 255, 255, 0.05); */
+    /* color: #ffffff; */
+}
+
+/* Blog title --> read more link */
+.blog-title > a {
+    text-decoration: none;
+    color: white;
+}
+
+.blog-title > a:focus {
+    color: white;
+    opacity: 0.8;
+}
+
+.blog-title > a:hover {
+    color: white;
+    opacity: 0.8;
+}
+.blog-title > a::after {
+    color: white;
+    opacity: 0.8;
+}
+
+.blog-title > a::before {
+    color: white;
+    opacity: 0.8;
+}
+
+
+/* <!-- Pagination --> */
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    /* gap: 10px; */
+}
+
+/* #pagination button {
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+} */
+
+#pagination button {
+    display: inline-block;
+    /* margin-right: 5px; */
+}
+
+#pagination button:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
+#pagination button:active {
+    background-color: #fff;
+    color: #000;
+}
+
+/* .current-page{
+    padding-top: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
+} */
+
+/* #next-page {
+    margin-left: 100px;
+}
+
+#previous-page {
+    margin-right: 100px;
+} */
+
+#current-page {
+    margin: 20px 100px;
+}

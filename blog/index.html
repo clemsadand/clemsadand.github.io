@@ -46,7 +46,7 @@
         "https://github.com/clemsadand"
       ],
       "address": {
-        "@type": "06 BP 2545",
+        "@type": "PostalAddress",
         "addressCountry": "BJ",
         "addressLocality": "Cotonou"
       },
@@ -64,11 +64,12 @@
     }
     </script>
     
+    <script src="../static/js/blog.js"></script>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../static/css/styles-medium-small.css">
-
+    <!-- Bloc -->
 </head>
 <body>
     <header>
@@ -87,12 +88,12 @@
                     <span></span>
                 </div>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Accueil</a><a href="index.html#hero" class="lang-content" data-lang="en" onclick="closeMenu()">Home</a></li>
-                    <li><a href="index.html#services" class="lang-content active" data-lang="fr" onclick="closeMenu()">Services</a><a href="index.html#services" class="lang-content" data-lang="en" onclick="closeMenu()">Services</a></li>
-                    <li><a href="index.html#portfolio" class="lang-content active" data-lang="fr" onclick="closeMenu()">Portfolio</a><a href="index.html#portfolio" class="lang-content" data-lang="en" onclick="closeMenu()">Portfolio</a></li>
-                    <li><a href="index.html#skills" class="lang-content active" data-lang="fr" onclick="closeMenu()">Compétences</a><a href="index.html#skills" class="lang-content" data-lang="en" onclick="closeMenu()">Skills</a></li>
-                    <li><a href="blog/index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Blog</a><a href="blog/index.html" class="lang-content" data-lang="en" onclick="closeMenu()">Blog</a></li>
-                    <li><a href="index.html#contact" class="lang-content active" data-lang="fr" onclick="closeMenu()">Contact</a><a href="index.html#contact" class="lang-content" data-lang="en" onclick="closeMenu()">Contact</a></li>
+                    <li><a href="../index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Accueil</a><a href="../index.html#hero-en" class="lang-content" data-lang="en" onclick="closeMenu()">Home</a></li>
+                    <li><a href="../index.html#services" class="lang-content active" data-lang="fr" onclick="closeMenu()">Services</a><a href="../index.html#services-en" class="lang-content" data-lang="en" onclick="closeMenu()">Services</a></li>
+                    <li><a href="../index.html#portfolio" class="lang-content active" data-lang="fr" onclick="closeMenu()">Portfolio</a><a href="../index.html#portfolio-en" class="lang-content" data-lang="en" onclick="closeMenu()">Portfolio</a></li>
+                    <li><a href="../index.html#skills" class="lang-content active" data-lang="fr" onclick="closeMenu()">Compétences</a><a href="../index.html#skills-en" class="lang-content" data-lang="en" onclick="closeMenu()">Skills</a></li>
+                    <!-- <li><a href="blog/index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Blog</a><a href="blog/index.html" class="lang-content" data-lang="en" onclick="closeMenu()">Blog</a></li> -->
+                    <li><a href="../index.html#contact" class="lang-content active" data-lang="fr" onclick="closeMenu()">Contact</a><a href="../index.html#contact-en" class="lang-content" data-lang="en" onclick="closeMenu()">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -163,116 +164,20 @@
             <!-- Reference -->
             <p class="page-reference"><a href="../index.html">Accueil</a>/<a href="../blog/index.html">Blog</a></p>
             
-            <div class="blog-grid">
-                
-                <article class="blog-card">
-                    <div class="blog-meta">28 août 2025 • 5 min de lecture</div>
-                    <h2 class="blog-title">Pourquoi un dashboard peut transformer la gestion d'une PME en Afrique ?</h2>
-                    <p class="blog-excerpt">
-                        Découvrez comment créer des rapports Excel automatisés qui se mettent à jour en temps réel 
-                        et gagnez des heures chaque semaine sur vos tâches répétitives...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">PME</span>
-                        <span class="tag">Tableau de bord</span>
-                        <span class="tag">Afrique</span>
-                    </div>
-                    <a href="article.html?id=dashboard-pme-afrique" class="btn-secondary">Lire l'article</a>
-                </article>
-                
-                <article class="blog-card">
-                    <div class="blog-meta">15 Décembre 2024 • 5 min de lecture</div>
-                    <h2 class="blog-title">Comment automatiser vos rapports Excel avec Python</h2>
-                    <p class="blog-excerpt">
-                        Découvrez comment créer des rapports Excel automatisés qui se mettent à jour en temps réel 
-                        et gagnez des heures chaque semaine sur vos tâches répétitives...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Excel</span>
-                        <span class="tag">Automatisation</span>
-                    </div>
-                    <a href="article.html?id=automatiser-excel-python" class="btn-secondary">Lire l'article</a>
-                </article>
 
-                <article class="blog-card">
-                    <div class="blog-meta">08 Décembre 2024 • 8 min de lecture</div>
-                    <h2 class="blog-title">Prédire les ventes avec Prophet : Guide pratique</h2>
-                    <p class="blog-excerpt">
-                        Tutorial step-by-step pour créer vos premiers modèles de prévision de ventes 
-                        avec la librairie Prophet de Facebook. Cas d'usage réel inclus...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Prophet</span>
-                        <span class="tag">Prévisions</span>
-                    </div>
-                    <a href="article.html?id=prophet-prevision-ventes" class="btn-secondary">Lire l'article</a>
-                </article>
+            <!-- Barre de recherche -->
+            <input type="text" id="search" placeholder="Rechercher un article..." oninput="applySearch()">
 
-                
+            <!-- Blog grid -->
+            <div class="blog-grid" id="blog-grid">
+                <!-- FIN DE LA GRILLE DES BLOGS -->
+            </div>
 
-
-
-                <article class="blog-card">
-                    <div class="blog-meta">01 Décembre 2024 • 6 min de lecture</div>
-                    <h2 class="blog-title">Streamlit vs Flask : Quel framework choisir ?</h2>
-                    <p class="blog-excerpt">
-                        Comparaison détaillée entre Streamlit et Flask pour vos applications web. 
-                        Avantages, inconvénients et cas d'usage pour faire le bon choix...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">Flask</span>
-                        <span class="tag">Web Dev</span>
-                    </div>
-                    <a href="#" class="btn-secondary">Lire l'article</a>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-meta">24 Novembre 2024 • 12 min de lecture</div>
-                    <h2 class="blog-title">ROI des projets Data Science : Comment mesurer l'impact</h2>
-                    <p class="blog-excerpt">
-                        Méthodologie complète pour calculer le retour sur investissement de vos projets 
-                        data science. Métriques clés, pièges à éviter et exemples concrets...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">ROI</span>
-                        <span class="tag">Data Science</span>
-                        <span class="tag">Business</span>
-                    </div>
-                    <a href="#" class="btn-secondary">Lire l'article</a>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-meta">17 Novembre 2024 • 10 min de lecture</div>
-                    <h2 class="blog-title">LaTeX pour les débutants : Guide complet</h2>
-                    <p class="blog-excerpt">
-                        Maîtrisez LaTeX de zéro avec ce guide pratique. Installation, premiers documents, 
-                        formules mathématiques et mise en page professionnelle...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">LaTeX</span>
-                        <span class="tag">Documentation</span>
-                        <span class="tag">Tutorial</span>
-                    </div>
-                    <a href="#" class="btn-secondary">Lire l'article</a>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-meta">10 Novembre 2024 • 7 min de lecture</div>
-                    <h2 class="blog-title">Top 5 des erreurs en Data Visualization</h2>
-                    <p class="blog-excerpt">
-                        Les erreurs les plus fréquentes dans la création de graphiques et tableaux de bord. 
-                        Comment les éviter pour des visualisations impactantes...
-                    </p>
-                    <div class="blog-tags">
-                        <span class="tag">DataViz</span>
-                        <span class="tag">Plotly</span>
-                        <span class="tag">Best Practices</span>
-                    </div>
-                    <a href="#" class="btn-secondary">Lire l'article</a>
-                </article>
+            <!-- Pagination -->
+            <div id="pagination">
+                <button id="previous-page" class="btn-secondary" style="visibility: hidden;">← <span class="screen">Précédent</span></button>
+                <span id="current-page" style="visibility: hidden;"></span>
+                <button id="next-page" class="btn-secondary" style="visibility: hidden;"><span class="screen">Suivant</span> →</button>
             </div>
 
             <!-- Newsletter signup -->
@@ -281,17 +186,25 @@
                 <p style="color: #a1a1aa; margin-bottom: 30px;">
                     Recevez mes meilleurs articles, outils gratuits et retours d'expérience directement dans votre boîte mail.
                 </p>
-                <div style="max-width: 400px; margin: 0 auto; display: flex; gap: 10px;">
-                    <input type="email" placeholder="votre.email@exemple.com" style="flex: 1; padding: 12px 15px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: #ffffff;">
-                    <button class="btn-primary" style="padding: 12px 25px; white-space: nowrap;">S'abonner</button>
-                </div>
-                <p style="color: #71717a; font-size: 0.85rem; margin-top: 15px;">
+                
+                <form class="newsletter-form">
+                    <div>
+                        <!-- <input type="email" placeholder="votre.email@exemple.com" style="flex: 1; padding: 12px 15px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: #ffffff;">
+                        <button class="btn-primary" style="text-align: center; margin-top: 30px;">S'abonner</button> -->
+                        <input type="email" id="email" name="email" placeholder="Email *" required>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-primary">S'abonner</button>
+                    </div>
+                </form>
+                <!-- <p style="color: #71717a; font-size: 0.85rem; margin-top: 15px;">
                     Pas de spam, désinscription en 1 clic. 1 email par semaine maximum.
-                </p>
+                </p> -->
             </div>
         </section>
     </div>
 
     <script src="../static/js/scripts.js"></script>
+    <script>loadArticles();</script>
 </body>
 </html>

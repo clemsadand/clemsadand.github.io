@@ -1,5 +1,19 @@
-        // Language switching functionality
-        function switchLanguage(lang) {
+let currentLanguage = localStorage.getItem("language") || "fr";
+
+// //Manage Language
+// function applyLanguage(lang) {
+//     document.body.setAttribute('lang-btn', lang);
+//     const langToggle = document.querySelector('.language-toggle');
+//     langToggle.textContent = lang === 'fr' ? '🌙 Dark Mode' : '☀️ Light Mode';
+// }
+
+// // Initialize theme when page loads
+// applyLanguage(currentLanguage);
+
+switchLanguage(currentLanguage);
+
+// Language switching functionality
+function switchLanguage(lang) {
             // Hide all language content
             document.querySelectorAll('.lang-content').forEach(content => {
                 content.classList.remove('active');
@@ -17,6 +31,8 @@
                     btn.classList.add('active');
                 }
             });
+            localStorage.setItem('language', lang);
+            console.log(`${lang} is saved...`)
         }
         
 

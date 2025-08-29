@@ -64,7 +64,7 @@
       "givenName": "Clément",
       "familyName": "ADANDE",
       "jobTitle": ["Data Scientist", "Développeur Web Freelance", "Consultant IA"],
-      "description": "Expert Data Science et Intelligence Artificielle, spécialisé en développement Python, Django, Streamlit. Solutions sur-mesure pour PME et startups à Cotonou, Bénin.",
+      "description": "Expert Data Science et Intelligence Artificielle, spécialisé en développement Python, Django, Flask, Streamlit. Solutions sur-mesure pour PME et startups à Cotonou, Bénin.",
       "url": "https://clemsadand.github.io",
       "email": "clemsadand@gmail.com",
       "telephone": "+229-01-67-71-05-61",
@@ -162,7 +162,7 @@
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://clemsadand.github.io/search?q={search_term_string}"
+          "urlTemplate": "https://clemsadand.github.io/blog/article.html?id={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       },
@@ -250,7 +250,7 @@
     <header>
         <!-- Language Toggle -->
         <div class="language-toggle">
-            <button class="lang-btn active" onclick="switchLanguage('fr')" data-lang="fr">🇫🇷 <span class="screen">FR</span></button>
+            <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">🇫🇷 <span class="screen">FR</span></button>
             <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">🇬🇧 <span class="screen">EN</span></button>
         </div>
 
@@ -263,12 +263,12 @@
                     <span></span>
                 </div>
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Accueil</a><a href="index.html#hero" class="lang-content" data-lang="en" onclick="closeMenu()">Home</a></li>
-                    <li><a href="index.html#services" class="lang-content active" data-lang="fr" onclick="closeMenu()">Services</a><a href="index.html#services" class="lang-content" data-lang="en" onclick="closeMenu()">Services</a></li>
-                    <li><a href="index.html#portfolio" class="lang-content active" data-lang="fr" onclick="closeMenu()">Portfolio</a><a href="index.html#portfolio" class="lang-content" data-lang="en" onclick="closeMenu()">Portfolio</a></li>
-                    <li><a href="index.html#skills" class="lang-content active" data-lang="fr" onclick="closeMenu()">Compétences</a><a href="index.html#skills" class="lang-content" data-lang="en" onclick="closeMenu()">Skills</a></li>
+                    <li><a href="index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Accueil</a><a href="index.html#hero-en" class="lang-content" data-lang="en" onclick="closeMenu()">Home</a></li>
+                    <li><a href="index.html#services" class="lang-content active" data-lang="fr" onclick="closeMenu()">Services</a><a href="index.html#services-en" class="lang-content" data-lang="en" onclick="closeMenu()">Services</a></li>
+                    <li><a href="index.html#portfolio" class="lang-content active" data-lang="fr" onclick="closeMenu()">Portfolio</a><a href="index.html#portfolio-en" class="lang-content" data-lang="en" onclick="closeMenu()">Portfolio</a></li>
+                    <li><a href="index.html#skills" class="lang-content active" data-lang="fr" onclick="closeMenu()">Compétences</a><a href="index.html#skills-en" class="lang-content" data-lang="en" onclick="closeMenu()">Skills</a></li>
                     <li><a href="blog/index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Blog</a><a href="blog/index.html" class="lang-content" data-lang="en" onclick="closeMenu()">Blog</a></li>
-                    <li><a href="index.html#contact" class="lang-content active" data-lang="fr" onclick="closeMenu()">Contact</a><a href="index.html#contact" class="lang-content" data-lang="en" onclick="closeMenu()">Contact</a></li>
+                    <li><a href="index.html#contact" class="lang-content active" data-lang="fr" onclick="closeMenu()">Contact</a><a href="index.html#contact-en" class="lang-content" data-lang="en" onclick="closeMenu()">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -385,7 +385,7 @@
             </section>
 
             <!-- Services -->
-            <section id="services" class="section">
+            <section id="services" class="section active">
                 <h2 class="section-title">Services</h2>
                 <p class="section-subtitle">Des solutions complètes pour digitaliser et optimiser votre activité</p>
                 
@@ -467,7 +467,7 @@
             </section>
 
             <!-- Portfolio -->
-            <section id="portfolio" class="section">
+            <section id="portfolio" class="section active">
                 <h2 class="section-title">Portfolio</h2>
                 <p class="section-subtitle">Découvrez mes réalisations récentes et projets innovants</p>
                 
@@ -607,7 +607,7 @@
             </section>
 
             <!-- Skills -->
-            <section id="skills" class="section">
+            <section id="skills" class="section active">
                 <h2 class="section-title">Compétences</h2>
                 <p class="section-subtitle">Technologies et outils maîtrisés pour créer des solutions innovantes</p>
                 
@@ -781,13 +781,13 @@
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="section">
+            <section id="contact" class="section active">
                 <h2 class="section-title">Démarrons votre projet</h2>
                 <p class="section-subtitle">Contactez-moi pour discuter de vos besoins et transformer vos idées en réalité</p>
                 
                 <div class="contact-form">
                     <form action="mailto:clemsadand@gmail.com" method="post" enctype="text/plain">
-                        <div style="display: flex; justify-content: space-between;">
+                        <div class="zone-contact">
                             <div class="form-group">
                                 <input type="text" id="name" name="name" placeholder="Nom complet *" required>
                             </div>
@@ -827,7 +827,7 @@
         <!-- CONTENU ANGLAIS -->
         <div class="lang-content" data-lang="en">
             <!-- Hero Section -->
-            <section id="hero" class="hero">
+            <section id="hero-en" class="hero">
                 <div class="hero-content">
                     <h1 class="hero-title">Clément ADANDE</h1>
                     <p class="hero-subtitle">Freelance Data Science & AI | Web Development | Python Automation</p>
@@ -875,7 +875,7 @@
             </section>
 
             <!-- Services -->
-            <section id="services" class="section">
+            <section id="services-en" class="section">
                 <h2 class="section-title">Services</h2>
                 <p class="section-subtitle">Complete solutions to digitize and optimize your business</p>
                 
@@ -958,7 +958,7 @@
 
 
             <!-- Portfolio EN -->
-            <section id="portfolio" class="section">
+            <section id="portfolio-en" class="section">
                 <h2 class="section-title">Portfolio</h2>
                 <p class="section-subtitle">Discover my recent achievements and innovative projects</p>
                 
@@ -1105,7 +1105,7 @@
 
 
             <!-- Skills -->
-            <section id="skills" class="section">
+            <section id="skills-en" class="section">
                 <h2 class="section-title">Skills</h2>
                 <p class="section-subtitle">Technologies and tools mastered to create innovative solutions</p>
                 
@@ -1281,13 +1281,13 @@
 
 
             <!-- Contact EN -->
-            <section id="contact" class="section">
+            <section id="contact-en" class="section">
                 <h2 class="section-title">Let's Start Your Project</h2>
                 <p class="section-subtitle">Contact me to discuss your needs and turn your ideas into reality</p>
                 
                 <div class="contact-form">
                     <form action="mailto:clemsadand@gmail.com" method="post" enctype="text/plain">
-                        <div style="display: flex; justify-content: space-between;">
+                        <div class="zone-contact">
                             <div class="form-group">
                                 <input type="text" id="name-en" name="name" placeholder="Full Name *" required>
                             </div>
