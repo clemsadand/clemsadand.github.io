@@ -1,0 +1,61 @@
+[
+    {
+        "id": "voice-chatbot-database",
+        "name": "VoiceDB Assistant",
+        "category": "Data Science & AI",
+        "client": "Godwin Service",
+        "date": "2025-08-15",
+        "url": "",
+        "images": [
+            "/home/clement/Downloads/work-1.jpg",
+            "/home/clement/Downloads/work-4.jpg",
+            "/home/clement/Downloads/work-1.jpg"
+        ],
+        "keywords": ["Database", "OpenAI", "Gemini", "Speech Recognition", "HTML", "CSS", "JavaScript"],
+        "description": "Assistant vocal intelligent permettant d'interagir avec une base de données en langage naturel. Intègre reconnaissance vocale, NLP et opérations CRUD en temps réel."
+    },
+    {
+        "id": "dashboard-forecasting-sales",
+        "name": "Tableau de prévision des vente",
+        "category": "Data Science & AI",
+        "client": "",
+        "date": "2025-01-20",
+        "url": "https://fsales.streamlit.app/",
+        "images": [
+            "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
+            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop"
+        ],
+        "keywords": ["Streamlit", "Prophet", "Pandas", "Plotly", "Time Serie Forecasting"],
+        "description": "Tableau de bord prédictif pour forecasting des ventes avec visualisations interactives et modèles de machine learning intégrés."
+    },
+    {
+        "id": "quiz-python-platform",
+        "name": "Plateforme de Quiz Python",
+        "category": "Web Développement",
+        "client": "Enseignante à l'UAC",
+        "date": "2025-05-10",
+        "url": "",
+        "images": [
+             "/home/clement/Downloads/work-1.jpg",
+            "/home/clement/Downloads/work-4.jpg",
+            "/home/clement/Downloads/work-1.jpg"
+        ],
+        "keywords": ["Flask", "SQLite", "Google Sheets", "Admin Interface"],
+        "description": "Plateforme de quiz interactive avec système d'évaluation automatique, tableau de bord administrateur et intégration Google Sheets."
+    },
+    {
+        "id": "quiz-python-platform",
+        "name": "Cours Mathématiques LaTeX",
+        "category": "Documentation LaTeX",
+        "client": "",
+        "date": "2019-05-10",
+        "url": "",
+        "images": [
+             "/home/clement/Downloads/work-1.jpg",
+            "/home/clement/Downloads/work-4.jpg",
+            "/home/clement/Downloads/work-1.jpg"
+        ],
+        "keywords": ["LaTeX", "Tikz", "Education", "Publising"],
+        "description": "Collection complète de supports pédagogiques en mathématiques pour lycée scientifique, entièrement rédigés avec LaTeX."
+    }
+]

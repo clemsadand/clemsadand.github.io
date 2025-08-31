@@ -56,8 +56,8 @@
         "LLM", "Large Language Models", "Transformers", "TikZ", "Technical writing"
       ],
       "offers": {
-        "@type": "Service",
-        "serviceType": [
+        "@type": "Project",
+        "projectType": [
           "Data Science & Analytics", "Développement Web", "Machine Learning", "Automatisation Python", "Documentation LaTeX", "Natural Language Processing", "NLP"
         ]
       }
@@ -89,7 +89,7 @@
                 </div>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="../index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Accueil</a><a href="../index.html#hero-en" class="lang-content" data-lang="en" onclick="closeMenu()">Home</a></li>
-                    <li><a href="../index.html#services" class="lang-content active" data-lang="fr" onclick="closeMenu()">Services</a><a href="../index.html#services-en" class="lang-content" data-lang="en" onclick="closeMenu()">Services</a></li>
+                    <li><a href="../index.html#projects" class="lang-content active" data-lang="fr" onclick="closeMenu()">Projects</a><a href="../index.html#projects-en" class="lang-content" data-lang="en" onclick="closeMenu()">Projects</a></li>
                     <li><a href="../index.html#portfolio" class="lang-content active" data-lang="fr" onclick="closeMenu()">Portfolio</a><a href="../index.html#portfolio-en" class="lang-content" data-lang="en" onclick="closeMenu()">Portfolio</a></li>
                     <li><a href="../index.html#skills" class="lang-content active" data-lang="fr" onclick="closeMenu()">Compétences</a><a href="../index.html#skills-en" class="lang-content" data-lang="en" onclick="closeMenu()">Skills</a></li>
                     <!-- <li><a href="blog/index.html" class="lang-content active" data-lang="fr" onclick="closeMenu()">Blog</a><a href="blog/index.html" class="lang-content" data-lang="en" onclick="closeMenu()">Blog</a></li> -->
@@ -154,54 +154,41 @@
         </div>
     </header>
 
+    <div class="container">
+        <div class="left-column">
+            <div class="carousel-container">
+                <div class="carousel-images" id="carouselImages">
+                    <!-- Images will be loaded here -->
+                </div>
+                <div class="carousel-nav" id="carouselNav">
+                    <!-- Navigation dots will be loaded here -->
+                </div>
+            </div>
+            <div class="keywords" id="keywords">
+                <!-- Keywords will be loaded here -->
+            </div>
+        </div>
 
-<!-- PAGE BLOG -->
-    <div id="blog" class="page" style="padding-top: 100px;">
-        <section class="section">
-            <h1 class="section-title">Blog & Articles</h1>
-            <p class="section-subtitle" style="margin-bottom: 20px;">Insights, tutoriels et retours d'expérience en Data Science et développement</p>
-
-            <!-- Reference -->
-            <p class="page-reference"><a href="../index.html">Accueil</a>/<a href="../blog/index.html">Blog</a></p>
-            
-
-            <!-- Barre de recherche -->
-            <input type="text" id="search" placeholder="Rechercher un article..." oninput="applySearch()">
-
-            <!-- Blog grid -->
-            <div class="blog-grid" id="blog-grid">
-                <!-- FIN DE LA GRILLE DES BLOGS -->
+        <div class="right-column">
+            <div class="portfolio-detail">
+                <h2>Info sur ce project</h2>
+                <div>
+                    <ul>
+                        <li><span>Catégorie :</span> <span id="portfolio-category">-</span></li>
+                        <li><span>Client :</span> <span id="portfolio-client">-</span></li>
+                        <li><span>Date :</span> <span id="portfolio-date">-</span></li>
+                        <li><span>URL :</span> <span id="portfolio-url">-</span></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Pagination -->
-            <div id="pagination">
-                <button id="previous-page" class="btn-secondary" style="visibility: hidden;">← <span class="screen">Précédent</span></button>
-                <span id="current-page" style="visibility: hidden;"></span>
-                <button id="next-page" class="btn-secondary" style="visibility: hidden;"><span class="screen">Suivant</span> →</button>
-            </div>
-
-            <!-- Newsletter signup -->
-            <div style="text-align: center; margin-top: 80px; padding: 40px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                <h3 style="color: #ffffff; margin-bottom: 20px; font-size: 1.8rem;">📧 Newsletter Tech</h3>
-                <p style="color: #a1a1aa; margin-bottom: 30px;">
-                    Recevez mes meilleurs articles, outils gratuits et retours d'expérience directement dans votre boîte mail.
+            <div class="portfolio-description">
+                <h3>Description du projet</h3>
+                <p id="portfolio-description-text">
+                    
                 </p>
-                
-                <form class="newsletter-form">
-                    <div>
-                        <!-- <input type="email" placeholder="votre.email@exemple.com" style="flex: 1; padding: 12px 15px; border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: #ffffff;">
-                        <button class="btn-primary" style="text-align: center; margin-top: 30px;">S'abonner</button> -->
-                        <input type="email" id="email" name="email" placeholder="Email *" required>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn-primary">S'abonner</button>
-                    </div>
-                </form>
-                <!-- <p style="color: #71717a; font-size: 0.85rem; margin-top: 15px;">
-                    Pas de spam, désinscription en 1 clic. 1 email par semaine maximum.
-                </p> -->
             </div>
-        </section>
+        </div>
     </div>
 
     <footer class="container"></footer>
@@ -213,10 +200,138 @@
             </ul>
         </div>
     </footer>
+    <!-- SCRIPTS -->
+    <script src="../static/js/scripts.js"></script>
+    <script src="../static/js/portfolio.js"></script>
     <script>
         document.getElementById("year").textContent = new Date().getFullYear();
     </script>
-    <script src="../static/js/scripts.js"></script>
-    <script>loadArticles();</script>
+    <script>
+        let currentProjectData = null;
+        let currentImageIndex = 0;
+
+        // // Initialize the application
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     populateProjectSelector();
+        //     if (projectsData.length > 0) {
+        //         loadProject(projectsData[0]);
+        //     }
+        // });
+
+        // function populateProjectSelector() {
+        //     const select = document.getElementById('projectSelect');
+        //     projectsData.forEach(project => {
+        //         const option = document.createElement('option');
+        //         option.value = project.id;
+        //         option.textContent = project.name;
+        //         select.appendChild(option);
+        //     });
+
+        //     select.addEventListener('change', function() {
+        //         if (this.value) {
+        //             const project = projectsData.find(s => s.id == this.value);
+        //             if (project) {
+        //                 loadProject(project);
+        //             }
+        //         }
+        //     });
+        // }
+
+        function loadProject(projectData) {
+            currentProjectData = projectData;
+            currentImageIndex = 0;
+
+            // Update project info
+            document.getElementById('portfolio-category').textContent = projectData.category;
+            document.getElementById('portfolio-client').textContent = projectData.client;
+            document.getElementById('portfolio-date').textContent = projectData.date;
+            document.getElementById('portfolio-url').textContent = projectData.url;
+            document.getElementById('portfolio-description-text').textContent = projectData.description;
+
+            // Update selector
+            document.getElementById('projectSelect').value = projectData.id;
+
+            // Load images
+            loadCarouselImages(projectData.images);
+
+            // Load keywords
+            loadKeywords(projectData.keywords);
+        }
+
+        function loadCarouselImages(images) {
+            const carouselImages = document.getElementById('carouselImages');
+            const carouselNav = document.getElementById('carouselNav');
+
+            // Clear existing content
+            carouselImages.innerHTML = '';
+            carouselNav.innerHTML = '';
+
+            // Add images
+            images.forEach((imageSrc, index) => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = `Project image ${index + 1}`;
+                img.className = 'carousel-image';
+                img.loading = 'lazy';
+                carouselImages.appendChild(img);
+
+                // Add navigation dot
+                const dot = document.createElement('div');
+                dot.className = `nav-dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToImage(index));
+                carouselNav.appendChild(dot);
+            });
+
+            // Auto-rotate carousel every 5 seconds
+            if (images.length > 1) {
+                setInterval(nextImage, 5000);
+            }
+        }
+
+        function loadKeywords(keywords) {
+            const keywordsContainer = document.getElementById('keywords');
+            keywordsContainer.innerHTML = '';
+
+            keywords.slice(0, 5).forEach(keyword => {
+                const span = document.createElement('span');
+                span.className = 'keyword';
+                span.textContent = keyword;
+                keywordsContainer.appendChild(span);
+            });
+        }
+
+        function goToImage(index) {
+            if (!currentProjectData) return;
+
+            currentImageIndex = index;
+            const carouselImages = document.getElementById('carouselImages');
+            const dots = document.querySelectorAll('.nav-dot');
+
+            carouselImages.style.transform = `translateX(-${index * 100}%)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextImage() {
+            if (!currentProjectData) return;
+
+            const nextIndex = (currentImageIndex + 1) % currentProjectData.images.length;
+            goToImage(nextIndex);
+        }
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (!currentProjectData) return;
+
+            if (e.key === 'ArrowLeft') {
+                const prevIndex = (currentImageIndex - 1 + currentProjectData.images.length) % currentProjectData.images.length;
+                goToImage(prevIndex);
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        });
+    </script>
 </body>
 </html>

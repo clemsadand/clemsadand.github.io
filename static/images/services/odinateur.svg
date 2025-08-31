@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg", style="display: none;">
+    <symbol id="ordinateur" viewBox="0 0 24 24">
+        <rect x="2" y="4" width="20" height="14" rx="2" stroke="url(#webGradient)" stroke-width="2" fill="url(#webGradient)" fill-opacity="0.1"/>
+        <path d="M2 8H22" stroke="url(#webGradient)" stroke-width="2"/>
+        <circle cx="6" cy="6" r="1" fill="url(#webGradient)"/>
+        <circle cx="9" cy="6" r="1" fill="url(#webGradient)"/>
+        <circle cx="12" cy="6" r="1" fill="url(#webGradient)"/>
+        <path d="M7 12H17M7 15H14" stroke="url(#webGradient)" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+            <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#06b6d4"/>
+                <stop offset="100%" style="stop-color:#3b82f6"/>
+            </linearGradient>
+        </defs>
+    </symbol>
+</svg>

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="carreau" viewBox="0 0 24 24">
+        <path d="M3 13H11V21H3V13Z" stroke="url(#gradient1)" stroke-width="2" fill="url(#gradient1)" fill-opacity="0.1"/>
+        <path d="M13 3H21V11H13V3Z" stroke="url(#gradient2)" stroke-width="2" fill="url(#gradient2)" fill-opacity="0.1"/>
+        <path d="M13 13H21V21H13V13Z" stroke="url(#gradient3)" stroke-width="2" fill="url(#gradient3)" fill-opacity="0.1"/>
+        <path d="M3 3H11V11H3V3Z" stroke="url(#gradient4)" stroke-width="2" fill="url(#gradient4)" fill-opacity="0.1"/>
+        <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#3b82f6"/>
+                <stop offset="100%" style="stop-color:#8b5cf6"/>
+            </linearGradient>
+            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#10b981"/>
+                <stop offset="100%" style="stop-color:#3b82f6"/>
+            </linearGradient>
+            <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f59e0b"/>
+                <stop offset="100%" style="stop-color:#ef4444"/>
+            </linearGradient>
+            <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#8b5cf6"/>
+                <stop offset="100%" style="stop-color:#ec4899"/>
+            </linearGradient>
+        </defs>
+    </symbol>
+
+    <symbol id="ordinateur" viewBox="0 0 24 24">
+        <rect x="2" y="4" width="20" height="14" rx="2" stroke="url(#webGradient)" stroke-width="2" fill="url(#webGradient)" fill-opacity="0.1"/>
+        <path d="M2 8H22" stroke="url(#webGradient)" stroke-width="2"/>
+        <circle cx="6" cy="6" r="1" fill="url(#webGradient)"/>
+        <circle cx="9" cy="6" r="1" fill="url(#webGradient)"/>
+        <circle cx="12" cy="6" r="1" fill="url(#webGradient)"/>
+        <path d="M7 12H17M7 15H14" stroke="url(#webGradient)" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+            <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#06b6d4"/>
+                <stop offset="100%" style="stop-color:#3b82f6"/>
+            </linearGradient>
+        </defs>
+    </symbol>
+
+    <symbol id="document" viewBox="0 0 24 24">
+        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="url(#docGradient)" stroke-width="2" fill="url(#docGradient)" fill-opacity="0.1"/>
+        <path d="M14 2V8H20" stroke="url(#docGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 13H16M8 17H13" stroke="url(#docGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M10 9H14" stroke="url(#docGradient)" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+            <linearGradient id="docGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f59e0b"/>
+                <stop offset="100%" style="stop-color:#ef4444"/>
+            </linearGradient>
+        </defs>
+    </symbol>
+
+    <symbol id="globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke="url(#webGradient2)" stroke-width="2" fill="url(#webGradient2)" fill-opacity="0.1"/>
+        <path d="M2 12H22M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="url(#webGradient2)" stroke-width="2"/>
+        <defs>
+            <linearGradient id="webGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#06b6d4"/>
+                <stop offset="100%" style="stop-color:#3b82f6"/>
+            </linearGradient>
+        </defs>
+    </symbol>
+
+    <symbol id="star" viewBox="0 0 24 24">
+         <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="url(#rocketGradient)" stroke-width="2" fill="url(#rocketGradient)" fill-opacity="0.2"/>
+        <defs>
+            <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#f59e0b"/>
+                <stop offset="100%" style="stop-color:#ef4444"/>
+            </linearGradient>
+        </defs>
+   </symbol>
+
+   <symbol id="data" viewBox="0 0 24 24">
+        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2Z" fill="url(#aiGradient)"/>
+        <path d="M21 9V7L15 9V11L21 9Z" fill="url(#aiGradient)"/>
+        <path d="M9 9V7L3 9V11L9 9Z" fill="url(#aiGradient)"/>
+        <circle cx="12" cy="17" r="3" stroke="url(#aiGradient)" stroke-width="2" fill="url(#aiGradient)" fill-opacity="0.2"/>
+        <path d="M8 12L16 12" stroke="url(#aiGradient)" stroke-width="2"/>
+        <path d="M12 8V14" stroke="url(#aiGradient)" stroke-width="2"/>
+        <defs>
+            <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#8b5cf6"/>
+                <stop offset="100%" style="stop-color:#ec4899"/>
+            </linearGradient>
+        </defs>
+   </symbol>
+
+    <symbol id="cloud" viewBox="0 0 24 24">
+        <path d="M18 10H20C21.1046 10 22 10.8954 22 12V20C22 21.1046 21.1046 22 20 22H4C2.89543 22 2 21.1046 2 20V12C2 10.8954 2.89543 10 4 10H6" stroke="url(#cloudGradient)" stroke-width="2"/>
+        <path d="M7 9C7 7.89543 7.89543 7 9 7H15C16.1046 7 17 7.89543 17 9V10H7V9Z" stroke="url(#cloudGradient)" stroke-width="2" fill="url(#cloudGradient)" fill-opacity="0.2"/>
+        <circle cx="6" cy="16" r="1" fill="url(#cloudGradient)"/>
+        <circle cx="10" cy="16" r="1" fill="url(#cloudGradient)"/>
+        <path d="M6 2L12 6L18 2" stroke="url(#cloudGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <defs>
+            <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#10b981"/>
+                <stop offset="100%" style="stop-color:#06b6d4"/>
+            </linearGradient>
+        </defs>
+   </symbol>
+
+    <symbol id="chart" viewBox="0 0 24 24">
+    <path d="M3 3V18C3 19.1046 3.89543 20 5 20H21" stroke="url(#chartGradient)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M7 16L10 12L14 16L18 8" stroke="url(#chartGradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="7" cy="16" r="2" fill="url(#chartGradient)"/>
+        <circle cx="10" cy="12" r="2" fill="url(#chartGradient)"/>
+        <circle cx="14" cy="16" r="2" fill="url(#chartGradient)"/>
+        <circle cx="18" cy="8" r="2" fill="url(#chartGradient)"/>
+        <defs>
+            <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#3b82f6"/>
+                <stop offset="100%" style="stop-color:#8b5cf6"/>
+            </linearGradient>
+        </defs>
+    </symbol>
+
+</svg>
