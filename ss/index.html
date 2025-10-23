@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sourou Services - Saisie Word & LaTeX</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  /* --- Variables & Reset --- */
+  :root {
+    --primary-color: #1a73e8;
+    --secondary-color: #1e3a8a;
+    --light-bg: #f4f6f8;
+    --dark-text: #333;
+    --light-text: #666;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --card-radius: 12px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+  }
+
+  /* --- Animation d'apparition --- */
+  @keyframes fadeInSection {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --- Header (Hero Section) --- */
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  header p {
+    font-size: 1.4em;
+    font-weight: 400;
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+
+  /* --- Bouton CTA (Call to Action) --- */
+  .cta {
+    display: inline-block;
+    padding: 15px 35px;
+    background: #fff;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .cta:hover {
+    background: #f0f0f0;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .cta-secondary {
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid #fff;
+  }
+   .cta-secondary:hover {
+    background: var(--secondary-color);
+    color: #fff;
+  }
+
+  /* --- Sections --- */
+  main {
+    width: 100%;
+    overflow-x: hidden; /* Empêche le débordement horizontal des animations */
+  }
+
+  section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    /* Application de l'animation */
+    opacity: 0;
+    animation: fadeInSection 0.8s ease-out forwards;
+  }
+  
+  /* Pour animer les sections les unes après les autres */
+  section:nth-of-type(2) { animation-delay: 0.1s; } /* Catalogue */
+  section:nth-of-type(3) { animation-delay: 0.2s; } /* Calculateur */
+  section:nth-of-type(4) { animation-delay: 0.3s; } /* FAQ (NOUVEAU) */
+  section:nth-of-type(5) { animation-delay: 0.4s; } /* Contact */
+
+
+  h2 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+  }
+  
+  h3 {
+    color: var(--dark-text);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  /* --- Grille des Services --- */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+  }
+
+  .service-card {
+    border: 1px solid #eee;
+    padding: 25px;
+    border-radius: var(--card-radius);
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .card-icon {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+  }
+
+  /* Icônes colorées */
+  .icon-word { color: #2b579a; }
+  .icon-latex { color: #008080; }
+  .icon-layout { color: #6d4c41; }
+  .icon-image { color: #d32f2f; }
+  .icon-table { color: #388e3c; }
+  .icon-book { color: #f57c00; }
+  .icon-list { color: #0288d1; }
+  .icon-urgent { color: #fbc02d; }
+  .icon-convert { color: #7b1fa2; }
+
+  .service-card .price {
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--primary-color);
+  }
+  
+  .service-card p {
+    color: var(--light-text);
+    font-size: 0.95em;
+  }
+  
+  .standard-info {
+    background: #e8f0fe;
+    padding: 20px;
+    border-radius: var(--card-radius);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  /* --- Catalogue / Exemples --- */
+  #catalogue ul {
+    list-style: none;
+    padding-left: 0;
+    max-width: 600px;
+    margin: 20px auto 30px;
+  }
+  
+  #catalogue li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+  }
+  
+  #catalogue li::before {
+    content: '\f058'; /* Icône "check-circle" de Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #28a745; /* Vert */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.2em;
+  }
+  
+  #catalogue .cta {
+    display: block;
+    text-align: center;
+    max-width: 300px;
+    margin: 20px auto 0;
+  }
+
+  /* --- Calculateur --- */
+  .calculator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .calculator-form .form-group {
+    margin-bottom: 15px;
+  }
+
+  .calculator-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: var(--light-text);
+  }
+
+  .calculator-form input,
+  .calculator-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .calculator-result {
+    text-align: center;
+    background: #e8f0fe;
+    padding: 30px;
+    border-radius: var(--card-radius);
+  }
+
+  .calculator-result button {
+    margin-bottom: 20px;
+  }
+
+  #total {
+    font-weight: 900;
+    margin-top: 15px;
+    font-size: 2.2em;
+    color: var(--secondary-color);
+  }
+  
+  /* --- Section FAQ (NOUVEAU) --- */
+  #faq {
+    background: var(--light-bg); /* Fond légèrement différent pour la section */
+    box-shadow: none; /* Pas d'ombre principale pour la section */
+  }
+
+  .faq-container {
+    max-width: 850px; /* Centrer le contenu de la FAQ */
+    margin: 0 auto;
+  }
+
+  details {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  details:hover {
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+  }
+
+  summary {
+    position: relative;
+    padding: 20px 50px 20px 25px; /* Espace à droite pour l'icône */
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    cursor: pointer;
+    list-style: none; /* Cache le marqueur par défaut */
+  }
+
+  /* Cache le marqueur par défaut (tous navigateurs) */
+  summary::-webkit-details-marker { display: none; }
+  summary::marker { display: none; }
+
+  summary::after {
+    content: '\f078'; /* Icône Font Awesome chevron-down */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+  }
+
+  details[open] > summary {
+    border-bottom: 1px solid #e0e0e0; /* Ligne de séparation */
+  }
+
+  details[open] > summary::after {
+    transform: translateY(-50%) rotate(180deg); /* Animation de l'icône */
+  }
+
+  .faq-answer {
+    padding: 25px;
+    line-height: 1.7;
+    color: var(--light-text);
+  }
+  
+  .faq-answer p, 
+  .faq-answer ul,
+  .faq-answer table {
+    margin-top: 15px;
+  }
+  
+  .faq-answer ul {
+    list-style-type: disc;
+    padding-left: 40px; /* Indentation des listes */
+  }
+  
+  /* Style pour le tableau dans la FAQ */
+  .faq-answer table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .faq-answer th, .faq-answer td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    font-size: 0.95em;
+  }
+  .faq-answer th {
+    background: #e8f0fe;
+  }
+
+
+  /* --- Contact --- */
+  #contact {
+    text-align: center;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: #fff;
+  }
+  
+  #contact h2 {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+  
+  #contact p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  
+  /* --- Footer --- */
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: var(--dark-text);
+    color: #aaa;
+    margin-top: 60px;
+  }
+
+  /* --- Responsive (Mobile) --- */
+  @media (max-width: 768px) {
+    header {
+      min-height: 60vh;
+      padding: 60px 20px;
+    }
+    
+    header h1 {
+      font-size: 2.5em;
+    }
+    
+    header p {
+      font-size: 1.1em;
+    }
+
+    section {
+      padding: 30px 20px;
+      margin: 30px auto;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+    
+    .calculator-layout {
+      grid-template-columns: 1fr; /* Les 2 colonnes du calculateur passent en 1 */
+    }
+    
+    .calculator-result {
+      margin-top: 20px;
+    }
+    
+    summary {
+      padding-right: 45px; /* Un peu plus d'espace sur mobile */
+      font-size: 1em;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sourou Services</h1>
+  <p>On saisit, vous respirez – Saisie Word & LaTeX rapide et professionnelle</p>
+  <a href="#contact" class="cta">Commander maintenant</a>
+</header>
+
+<main>
+  <section id="services">
+    <h2>Nos Services & Tarifs</h2>
+    
+    <div class="standard-info">
+      <h3>Saisie standard</h3>
+      <p><strong>Prix : 250 FCFA / page</strong> ou <strong>1 100 FCFA / 5 pages</strong></p>
+      <p style="font-size: 0.9em; margin-top: 10px;">
+        <strong>Page standard :</strong> Times New Roman 12, interligne 1,5, marges normales, texte uniquement.
+        Les suppléments sont facturés à part.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      
+      <div class="service-card">
+        <div class="card-icon icon-word"><i class="fa-solid fa-file-word"></i></div>
+        <h3>Saisie Word</h3>
+        <p>Saisie simple ou avancée de vos documents manuscrits ou PDF.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="card-icon icon-latex"><i class="fa-solid fa-file-code"></i></div>
+        <h3>Saisie LaTeX</h3>
+        <p>Idéal pour documents scientifiques, mathématiques et thèses.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon icon-layout"><i class="fa-solid fa-columns"></i></div>
+        <h3>Mise en page spéciale</h3>
+        <p>2 colonnes, interligne réduit, styles personnalisés.</p>
+        <span class="price">50-100 FCFA/page</span>
+      </div>
+      
+      <div class="service-card">
+        <div class="card-icon icon-image"><i class="fa-solid fa-image"></i></div>
+        <h3>Figures / Images</h3>
+        <p>Insertion, numérotation et ajustement de vos illustrations.</p>
+        <span class="price">100-200 FCFA/figure</span>
+      </div>
+      
+      <div class="service-card">
+        <div class="card-icon icon-table"><i class="fa-solid fa-table-cells"></i></div>
+        <h3>Tableaux complexes</h3>
+        <p>Mise en forme avancée, fusion de cellules, styles.</p>
+        <span class="price">200-300 FCFA/tableau</span>
+      </div>
+      
+      <div class="service-card">
+        <div class="card-icon icon-book"><i class="fa-solid fa-book"></i></div>
+        <h3>Bibliographie</h3>
+        <p>Gestion BibTeX ou Word, style APA, IEEE, etc.</p>
+        <span class="price">500 FCFA/doc</span>
+      </div>
+      
+      <div class="service-card">
+        <div class="card-icon icon-list"><i class="fa-solid fa-list-ol"></i></div>
+        <h3>Table des matières</h3>
+        <p>Sommaire automatique, liste des figures et tableaux.</p>
+        <span class="price">200-500 FCFA/doc</span>
+      </div>
+      
+      <div class="service-card">
+        <div class="card-icon icon-urgent"><i class="fa-solid fa-bolt-lightning"></i></div>
+        <h3>Livraison urgente</h3>
+        <p>Recevez votre document en moins de 24h.</p>
+        <span class="price">+20-30% du total</span>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon icon-convert"><i class="fa-solid fa-right-left"></i></div>
+        <h3>Conversion</h3>
+        <p>Word ↔ LaTeX / PDF → Word avec reformatage.</p>
+        <span class="price">Dès 300 FCFA/page</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="catalogue">
+    <h2>Ce que nous faisons</h2>
+    <ul>
+      <li>Saisie de documents (rapports, mémoires, supports de cours, thèses)</li>
+      <li>Saisie d’épreuves manuscrites (tous niveaux, toutes matières)</li>
+      <li>Mise en forme avancée (styles, tableaux, figures, bibliographie)</li>
+      <li>Conversion de documents et nettoyage de formatage</li>
+    </ul>
+    <a href="https://wa.me/22940639676" class="cta cta-secondary">
+      <i class="fa-brands fa-whatsapp"></i> Voir des exemples
+    </a>
+  </section>
+
+  <section id="calculateur">
+    <h2>Calculateur de prix</h2>
+    
+    <div class="calculator-layout">
+      <div class="calculator-form">
+        <div class="form-group">
+          <label for="pages">Nombre de pages :</label>
+          <input type="number" id="pages" value="1" min="1">
+        </div>
+        
+        <div class="form-group">
+          <label for="misePage">Mise en page spéciale :</label>
+          <select id="misePage">
+            <option value="0">Non</option>
+            <option value="50">Oui (approx. +50 FCFA/page)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="figures">Nombre de figures :</label>
+          <input type="number" id="figures" value="0" min="0">
+        </div>
+        
+        <div class="form-group">
+          <label for="tableaux">Nombre de tableaux :</label>
+          <input type="number" id="tableaux" value="0" min="0">
+        </div>
+        
+        <div class="form-group">
+          <label for="urgent">Livraison urgente :</label>
+          <select id="urgent">
+            <option value="0">Non</option>
+            <option value="0.2">Oui (+20%)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="calculator-result">
+        <p>Estimation de votre tarif :</p>
+        <button onclick="calculerTotal()" class="cta cta-secondary">Calculer</button>
+        <p id="total">Total : 0 FCFA</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="faq">
+    <h2>Questions Fréquentes</h2>
+    <div class="faq-container">
+      
+      <details>
+        <summary>1. Qu’est-ce qu’une “page standard” ?</summary>
+        <div class="faq-answer">
+          <p>Une page standard comprend :</p>
+          <ul>
+            <li>Police Times New Roman 12</li>
+            <li>Interligne 1,5</li>
+            <li>Marges normales (haut/bas/gauche/droite)</li>
+            <li>Texte uniquement, sans figures, tableaux ou colonnes</li>
+          </ul>
+          <p>Toute modification de ce format (2 colonnes, interligne réduit, etc.) est facturée en service supplémentaire.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>2. Comment sont facturés les services supplémentaires ?</summary>
+        <div class="faq-answer">
+          <p>Les services supplémentaires sont facturés par page ou par document selon leur complexité :</p>
+          <table>
+            <tr><th>Service</th><th>Tarif standard</th></tr>
+            <tr><td>Mise en page spéciale</td><td>50 – 100 FCFA/page</td></tr>
+            <tr><td>Figures / images</td><td>100 – 200 FCFA/figure (simple à complexe)</td></tr>
+            <tr><td>Tableaux complexes</td><td>200 – 300 FCFA/tableau</td></tr>
+            <tr><td>Bibliographie / citations</td><td>500 FCFA/document</td></tr>
+            <tr><td>Sommaire / Table des matières</td><td>200 – 500 FCFA/document</td></tr>
+            <tr><td>Livraison urgente (&lt;24h)</td><td>+20 – 30% du total</td></tr>
+            <tr><td>Conversion Word ↔ LaTeX / PDF → Word</td><td>À partir de 300 FCFA/page</td></tr>
+          </table>
+          <p>Le calculateur en ligne permet d’estimer automatiquement le coût total selon vos choix et la complexité.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>3. Quels formats livrez-vous ?</summary>
+        <div class="faq-answer">
+          <p>Nous livrons vos documents dans les formats suivants :</p>
+          <ul>
+            <li>Word (.docx)</li>
+            <li>LaTeX (.tex + PDF)</li>
+            <li>PDF prêt à l’impression</li>
+          </ul>
+          <p>Vous recevez toujours une version modifiable et un PDF final.</p>
+        </div>
+      </details>
+      
+      <details>
+        <summary>4. Quels sont les délais de livraison ?</summary>
+        <div class="faq-answer">
+          <ul>
+            <li><strong>Saisie standard :</strong> 24 à 48 heures</li>
+            <li><strong>Livraison urgente :</strong> &lt; 24 heures (+20-30% du total)</li>
+          </ul>
+          <p>Pour de grands volumes (ex: thèse complète), le délai sera ajusté et confirmé lors de la commande.</p>
+        </div>
+      </details>
+      
+      <details>
+        <summary>5. Comment passer commande et payer ?</summary>
+        <div class="faq-answer">
+          <ul>
+            <li>Utilisez notre calculateur en ligne pour estimer le prix.</li>
+            <li>Cliquez sur le bouton “Commander via WhatsApp” pour nous envoyer votre demande.</li>
+            <li>Confirmez le devis précis avec nous.</li>
+            <li>Après validation, envoyez vos documents et procédez au paiement.</li>
+          </ul>
+          <p>Nous acceptons le paiement via mobile money ou virement bancaire, selon votre convenance.</p>
+        </div>
+      </details>
+      
+      <details>
+        <summary>6. La confidentialité est-elle garantie ?</summary>
+        <div class="faq-answer">
+          <p><strong>Oui, absolument.</strong> Tous vos documents et épreuves sont traités avec la plus stricte confidentialité.</p>
+          <ul>
+            <li>Les fichiers sont stockés de manière sécurisée.</li>
+            <li>Aucun document n’est partagé ou divulgué sans votre autorisation explicite.</li>
+          </ul>
+        </div>
+      </details>
+      
+      <details>
+        <summary>7. Puis-je demander des modifications après livraison ?</summary>
+        <div class="faq-answer">
+          <p><strong>Oui.</strong></p>
+          <ul>
+            <li>Les petites corrections ou oublis de notre part sont faits gratuitement dans un délai de 24h après livraison.</li>
+            <li>Les modifications majeures ou les ajouts de nouveau contenu (pages supplémentaires, nouvelles sections) sont facturés selon le tarif standard.</li>
+          </ul>
+        </div>
+      </details>
+      
+      <details>
+        <summary>8. Comment est calculé le prix pour plusieurs pages ?</summary>
+        <div class="faq-answer">
+          <p>Nous avons un tarif dégressif :</p>
+          <ul>
+            <li><strong>250 FCFA</strong> par page standard.</li>
+            <li><strong>Pack 5 pages = 1 100 FCFA</strong> (au lieu de 1 250 FCFA).</li>
+          </ul>
+          <p>Les pages supplémentaires au-delà d'un pack sont facturées 250 FCFA chacune. Les services (figures, tableaux, etc.) s'ajoutent au coût des pages.</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Prêt à commencer ?</h2>
+    <p>Envoyez-nous vos documents pour un devis précis et rapide.</p>
+    <a href="https://wa.me/22940639676?text=Bonjour%20Sourou%20Services,%20je%20souhaite%20commander" class="cta">
+      <i class="fa-brands fa-whatsapp"></i> Commander / Devis via WhatsApp
+    </a>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Sourou Services. Tous droits réservés.</p>
+</footer>
+
+<script>
+function calculerTotal() {
+  let pages = parseInt(document.getElementById("pages").value) || 0;
+  let misePage = parseInt(document.getElementById("misePage").value) || 0;
+  let figures = parseInt(document.getElementById("figures").value) || 0;
+  let tableaux = parseInt(document.getElementById("tableaux").value) || 0;
+  let urgent = parseFloat(document.getElementById("urgent").value) || 0;
+
+  // Gestion du tarif pack 5 pages
+  let fullPacks = Math.floor(pages / 5);
+  let remainingPages = pages % 5;
+  let totalPagesCost = fullPacks * 1100 + remainingPages * 250;
+
+  // Total avec services supplémentaires
+  // (Utilisation des tarifs moyens pour le calculateur : 150/figure, 250/tableau)
+  let total = totalPagesCost + (pages * misePage) + (figures * 150) + (tableaux * 250);
+
+  // Livraison urgente
+  total = total * (1 + urgent);
+
+  document.getElementById("total").innerText = "Total : " + total.toLocaleString() + " FCFA";
+}
+</script>
+
+</body>
+</html>
