@@ -6,9 +6,10 @@
   <meta name="description" content="Open course materials in mathematics, Python and LaTeX by Clément Adandé.">
   <title>Course materials · Clément Adandé</title>
   <link rel="stylesheet" href="../static/css/personal.css">
+  <script src="../static/js/site.js" defer></script>
 </head>
 <body>
-  <header class="site-header"><a class="wordmark" href="../index.html">CA<span>·</span></a><nav><a href="../index.html#projects">Projects</a><a href="../index.html#contact">Contact</a></nav></header>
+  <header class="site-header"><a class="wordmark" href="../index.html">CA<span>·</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav id="primary-navigation"><a href="../index.html#projects">Projects</a><a href="../index.html#contact">Contact</a></nav></header>
   <main>
     <section class="archive-hero"><p class="eyebrow">Open learning resources</p><h1>Course<br><em>materials.</em></h1><p class="lead">A small collection of learning materials in Python, mathematics and LaTeX.</p></section>
     <section class="project-list">
@@ -19,5 +20,6 @@
     </section>
   </main>
   <footer><span>© 2026 Clément Adandé</span><a href="../index.html">Home</a></footer>
+  <script>const menuButton=document.querySelector('.menu-toggle'),navigation=document.getElementById('primary-navigation');menuButton.addEventListener('click',()=>{const isOpen=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!isOpen));document.body.classList.toggle('menu-open',!isOpen)});navigation.addEventListener('click',event=>{if(event.target.matches('a')){menuButton.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}});document.addEventListener('keydown',event=>{if(event.key==='Escape'){menuButton.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}});document.addEventListener('click',event=>{if(document.body.classList.contains('menu-open')&&!event.target.closest('.site-header')){menuButton.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')}})</script>
 </body>
 </html>
